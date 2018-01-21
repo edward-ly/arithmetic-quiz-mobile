@@ -4,20 +4,36 @@ import { StyleSheet, Text, View } from 'react-native';
 export default class Application extends Component {
   render() {
     return (
-      <View style={styles.container}>
-        <Text>Open up App.js to start working on your app!</Text>
-        <Text>Changes you make will automatically reload.</Text>
-        <Text>Shake your phone to open the developer menu.</Text>
+      <View style={styles.mainPageContainer}>
+        {/* Question Area */}
+        <View style={{ flex: 1 }}>
+          <View style={{ flex: 1, backgroundColor: 'powderblue' }} />
+          <View style={{ flex: 1, backgroundColor: 'skyblue' }} />
+          <View style={{ flex: 1, backgroundColor: 'steelblue' }} />
+        </View>
+        {/* Answer Area */}
+        <View style={{ flex: 1 }}>
+          <View style={{ flex: 1, backgroundColor: 'powderblue' }} />
+          <View style={{ flex: 1, backgroundColor: 'skyblue' }} />
+          <View style={{ flex: 1, backgroundColor: 'steelblue' }} />
+        </View>
+        {/* Space for Keyboard */}
+        <View style={{ flex: 1 }}>
+          <View style={{ flex: 1, backgroundColor: 'powderblue' }} />
+          <View style={{ flex: 1, backgroundColor: 'skyblue' }} />
+          <View style={{ flex: 1, backgroundColor: 'steelblue' }} />
+        </View>
       </View>
     );
   }
 }
 
 const styles = StyleSheet.create({
-  container: {
+  mainPageContainer: {
     flex: 1,
     backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    paddingTop: 24,
+    paddingRight: 12,
+    paddingLeft: 12,
   },
 });
