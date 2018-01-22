@@ -1,36 +1,47 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, TextInput, View } from 'react-native';
+import { Button, StyleSheet, Text, TextInput, View } from 'react-native';
 
 export default class Application extends Component {
   constructor (props) {
     super(props);
     this.state = {
       submitted_answer: "",
-      correct_answer: "5",
-      answer_is_submitted: true,
+      correct_answer: "",
+      answer_is_submitted: false,
       question: [1, 2, 3, "+", "*"],
+      notation: "INFIX",
       times_submitted: 0,
     };
-    this.updateAnswer.bind(this);
-    this.submitAnswer.bind(this);
+    this.updateAnswer = this.updateAnswer.bind(this);
+    this.submitAnswer = this.submitAnswer.bind(this);
+  }
+  
+  generateNewQuestion () {
+    // Randomly generate a new expression and update state.
+    return [1, 2, 3, "+", "*"];
+  }
+  
+  calculateAnswer (question) {
+    // Parse question array and return the answer (as string).
+    return "5";
   }
   
   updateAnswer (text) {
     this.setState({
       submitted_answer: text,
-      answer_is_submitted: true,
+      answer_is_submitted: false,
     });
   }
   
-  submitAnswer (event) {
-    // let answer = event.target.value;
-    // console.log(answer);
-    // if (answer.length) {
-    //   this.setState({
-    //     answer: answer,
-    //     times_submitted: this.state.times_submitted + 1,
-    //   });
-    // }
+  submitAnswer () {
+    let { submitted_answer } = this.state;
+    if (submitted_answer && submitted_answer.length) {
+      this.setState({
+        correct_answer: this.calculateAnswer(this.state.question),
+        answer_is_submitted: true,
+        times_submitted: this.state.times_submitted + 1,
+      });
+    }
   }
 
   render() {
@@ -38,9 +49,9 @@ export default class Application extends Component {
     
     if (this.state.answer_is_submitted) {
       if (this.state.submitted_answer === this.state.correct_answer) {
-        answerMessage = <Text style={styles.text}>Correct!</Text>;
+        answerMessage = <Text style={styles.text}>Correct! Answer: {this.state.correct_answer}</Text>;
       } else {
-        answerMessage = <Text style={styles.text}>Incorrect!</Text>;
+        answerMessage = <Text style={styles.text}>Incorrect! Answer: {this.state.correct_answer}</Text>;
       }
     }
     
@@ -65,8 +76,14 @@ export default class Application extends Component {
                        keyboardType="numeric"
                        onChangeText={ text => this.updateAnswer(text) } />
           </View>
-          <View style={{ flex: 1, backgroundColor: 'skyblue' }} />
-          <View style={{ flex: 1, backgroundColor: 'steelblue' }} />
+          <View style={{ flex: 1, justifyContent: "center" }}>
+            <Button style={styles.submitButton}
+                    onPress={this.submitAnswer}
+                    title="Submit"
+                    color="green"
+                    accessibilityLabel="Tap here to submit" />
+          </View>
+          <View style={styles.flex} />
         </View>
         {/* Space for Keyboard */}
         <View style={styles.flex} />
@@ -97,6 +114,12 @@ const styles = StyleSheet.create({
     marginBottom: 8,
     borderColor: "gray",
     borderWidth: 2,
+    padding: 4,
+  },
+  submitButton: {
+    flex: 1,
+    marginTop: 8,
+    marginBottom: 8,
     padding: 4,
   },
   text: {
