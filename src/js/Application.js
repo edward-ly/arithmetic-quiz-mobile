@@ -1,5 +1,11 @@
 import React, { Component } from 'react';
-import { Button, StyleSheet, Text, TextInput, View } from 'react-native';
+import {
+  Button,
+  StyleSheet,
+  Text,
+  TextInput,
+  View,
+} from 'react-native';
 
 export default class Application extends Component {
   constructor (props) {
@@ -12,10 +18,10 @@ export default class Application extends Component {
       notation: "INFIX",
       times_submitted: 0,
     };
-    this.updateAnswer = this.updateAnswer.bind(this);
+    
     this.submitAnswer = this.submitAnswer.bind(this);
-    this.showHint = this.showHint.bind(this);
   }
+  
   componentDidMount () {
     this.setState({
       question: this.generateNewQuestion(),
@@ -53,8 +59,8 @@ export default class Application extends Component {
       });
     }
   }
-
-  render() {
+  
+  render () {
     let answerMessage = null;
     
     if (this.state.answer_is_submitted) {
@@ -64,7 +70,7 @@ export default class Application extends Component {
         answerMessage = <Text style={styles.text}>Incorrect! Answer: {this.state.correct_answer}</Text>;
       }
     }
-    
+
     return (
       <View style={styles.mainPageContainer}>
         {/* Question Area */}
