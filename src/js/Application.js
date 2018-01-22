@@ -14,6 +14,7 @@ export default class Application extends Component {
     };
     this.updateAnswer = this.updateAnswer.bind(this);
     this.submitAnswer = this.submitAnswer.bind(this);
+    this.showHint = this.showHint.bind(this);
   }
   
   generateNewQuestion () {
@@ -24,6 +25,10 @@ export default class Application extends Component {
   calculateAnswer (question) {
     // Parse question array and return the answer (as string).
     return "5";
+  }
+  
+  showHint () {
+    // Highlight the correct order of operations by color-coding all the numbers and symbols.
   }
   
   updateAnswer (text) {
@@ -69,21 +74,34 @@ export default class Application extends Component {
         </View>
         {/* Answer Area */}
         <View style={styles.flex}>
-          <View style={{ flex: 1, justifyContent: "center" }}>
-            <TextInput style={[styles.text, styles.answerForm]}
-                       underlineColorAndroid="transparent"
-                       placeholder="Answer"
-                       keyboardType="numeric"
-                       onChangeText={ text => this.updateAnswer(text) } />
+          <View style={styles.flexJustifyCenter}>
+            <View style={styles.flexRow}>
+              <TextInput style={[styles.text, styles.answerForm]}
+                         underlineColorAndroid="transparent"
+                         placeholder="Answer"
+                         keyboardType="numeric"
+                         onChangeText={ text => this.updateAnswer(text) } />
+              <Button style={styles.submitButton}
+                      onPress={this.submitAnswer}
+                      title="Submit"
+                      color="green"
+                      accessibilityLabel="Tap here to submit" />
+            </View>
           </View>
-          <View style={{ flex: 1, justifyContent: "center" }}>
+          <View style={styles.flexJustifyCenter}>
             <Button style={styles.submitButton}
-                    onPress={this.submitAnswer}
-                    title="Submit"
-                    color="green"
-                    accessibilityLabel="Tap here to submit" />
+                    onPress={this.showHint}
+                    title="Hint"
+                    color="skyblue"
+                    accessibilityLabel="Tap here for a hint" />
           </View>
-          <View style={styles.flex} />
+          <View style={styles.flexJustifyCenter}>
+            <Button style={styles.submitButton}
+                    onPress={this.generateNewQuestion}
+                    title="New Question"
+                    color="orange"
+                    accessibilityLabel="Tap here to generate a new question" />
+          </View>
         </View>
         {/* Space for Keyboard */}
         <View style={styles.flex} />
@@ -95,6 +113,16 @@ export default class Application extends Component {
 const styles = StyleSheet.create({
   flex: {
     flex: 1,
+  },
+  flexJustifyCenter: {
+    flex: 1,
+    justifyContent: "center",
+  },
+  flexRow: {
+    flex: 1,
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "center",
   },
   flexText: {
     flex: 1,
