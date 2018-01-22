@@ -5,7 +5,10 @@ export default class Application extends Component {
   constructor (props) {
     super(props);
     this.state = {
-      answer: "",
+      submitted_answer: "",
+      correct_answer: "5",
+      answer_is_submitted: true,
+      question: [1, 2, 3, "+", "*"],
       times_submitted: 0,
     };
     this.updateAnswer.bind(this);
@@ -14,7 +17,8 @@ export default class Application extends Component {
   
   updateAnswer (text) {
     this.setState({
-      answer: text,
+      submitted_answer: text,
+      answer_is_submitted: true,
     });
   }
   
@@ -30,18 +34,30 @@ export default class Application extends Component {
   }
 
   render() {
+    let answerMessage = null;
+    
+    if (this.state.answer_is_submitted) {
+      if (this.state.submitted_answer === this.state.correct_answer) {
+        answerMessage = <Text style={styles.text}>Correct!</Text>;
+      } else {
+        answerMessage = <Text style={styles.text}>Incorrect!</Text>;
+      }
+    }
+    
     return (
       <View style={styles.mainPageContainer}>
         {/* Question Area */}
-        <View style={{ flex: 1 }}>
-          <View style={{ flex: 1, backgroundColor: 'powderblue' }} />
-          <View style={{ flex: 1, backgroundColor: 'skyblue' }} />
-          <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
-            <Text style={styles.text}>{this.state.answer}</Text>
+        <View style={styles.flex}>
+          <View style={styles.flex} />
+          <View style={styles.flexText}>
+            <Text style={styles.text}>{this.state.question.join(" ")}</Text>
+          </View>
+          <View style={styles.flexText}>
+            { answerMessage }
           </View>
         </View>
         {/* Answer Area */}
-        <View style={{ flex: 1 }}>
+        <View style={styles.flex}>
           <View style={{ flex: 1, justifyContent: "center" }}>
             <TextInput style={[styles.text, styles.answerForm]}
                        underlineColorAndroid="transparent"
@@ -53,17 +69,21 @@ export default class Application extends Component {
           <View style={{ flex: 1, backgroundColor: 'steelblue' }} />
         </View>
         {/* Space for Keyboard */}
-        <View style={{ flex: 1 }}>
-          <View style={{ flex: 1, backgroundColor: 'powderblue' }} />
-          <View style={{ flex: 1, backgroundColor: 'skyblue' }} />
-          <View style={{ flex: 1, backgroundColor: 'steelblue' }} />
-        </View>
+        <View style={styles.flex} />
       </View>
     );
   }
 }
 
 const styles = StyleSheet.create({
+  flex: {
+    flex: 1,
+  },
+  flexText: {
+    flex: 1,
+    alignItems: "center",
+    justifyContent: "center",
+  },
   mainPageContainer: {
     flex: 1,
     backgroundColor: '#fff',
@@ -82,5 +102,5 @@ const styles = StyleSheet.create({
   text: {
     fontSize: 32,
     textAlign: "center",
-  }
+  },
 });
