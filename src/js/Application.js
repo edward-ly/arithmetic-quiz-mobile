@@ -8,13 +8,18 @@ export default class Application extends Component {
       submitted_answer: "",
       correct_answer: "",
       answer_is_submitted: false,
-      question: [1, 2, 3, "+", "*"],
+      question: [],
       notation: "INFIX",
       times_submitted: 0,
     };
     this.updateAnswer = this.updateAnswer.bind(this);
     this.submitAnswer = this.submitAnswer.bind(this);
     this.showHint = this.showHint.bind(this);
+  }
+  componentDidMount () {
+    this.setState({
+      question: this.generateNewQuestion(),
+    });
   }
   
   generateNewQuestion () {
