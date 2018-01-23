@@ -1,11 +1,11 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 import {
   Button,
   StyleSheet,
   Text,
   TextInput,
   View,
-} from 'react-native';
+} from "react-native";
 
 export default class Application extends Component {
   constructor (props) {
