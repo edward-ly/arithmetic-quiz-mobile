@@ -8,7 +8,7 @@ export default class FlexSpace extends Component {
   }
   
   render () {
-    let { flex } = this.props;
-    return <View style={{ flex: flex && flex > 0 ? flex : 1 }} />
+    let flex = this.props.flex || 1;
+    return <View style={{ flex: flex }} />;
   }
 }
