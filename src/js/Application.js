@@ -6,6 +6,7 @@ import {
   TextInput,
   View,
 } from "react-native";
+import FlexSpace from "./components/layout/FlexSpace";
 
 export default class Application extends Component {
   constructor (props) {
@@ -75,7 +76,7 @@ export default class Application extends Component {
       <View style={styles.mainPageContainer}>
         {/* Question Area */}
         <View style={styles.flex}>
-          <View style={styles.flex} />
+          <FlexSpace />
           <View style={styles.flexText}>
             <Text style={styles.text}>{this.state.question.join(" ")}</Text>
           </View>
@@ -115,7 +116,7 @@ export default class Application extends Component {
           </View>
         </View>
         {/* Space for Keyboard */}
-        <View style={styles.flex} />
+        <FlexSpace />
       </View>
     );
   }
