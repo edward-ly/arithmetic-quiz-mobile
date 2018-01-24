@@ -80,17 +80,17 @@ export default class Application extends Component {
         {/* Question Area */}
         <View style={FlexStyles.flex}>
           <FlexSpace />
-          <View style={[FlexStyles.flex, FlexStyles.flexAlignCenter, FlexStyles.flexJustifyCenter]}>
+          <View style={[FlexStyles.flex, FlexStyles.alignCenter, FlexStyles.justifyCenter]}>
             <Text style={[TextStyles.size32, TextStyles.alignCenter]}>{this.state.question.join(" ")}</Text>
           </View>
-          <View style={[FlexStyles.flex, FlexStyles.flexAlignCenter, FlexStyles.flexJustifyCenter]}>
+          <View style={[FlexStyles.flex, FlexStyles.alignCenter, FlexStyles.justifyCenter]}>
             <Text style={[TextStyles.size32, TextStyles.alignCenter]}>{statusMessage}</Text>
           </View>
         </View>
         {/* Answer Area */}
         <View style={FlexStyles.flex}>
-          <View style={[FlexStyles.flex, FlexStyles.flexJustifyCenter]}>
-            <View style={[FlexStyles.flex, FlexStyles.flexRow, FlexStyles.flexAlignCenter, FlexStyles.flexJustifyCenter]}>
+          <View style={[FlexStyles.flex, FlexStyles.justifyCenter]}>
+            <View style={[FlexStyles.flex, FlexStyles.flexRow, FlexStyles.alignCenter, FlexStyles.justifyCenter]}>
               <TextInput style={[TextStyles.size32, TextStyles.alignCenter, styles.answerForm]}
                          underlineColorAndroid="transparent"
                          placeholder="Answer"
@@ -103,14 +103,14 @@ export default class Application extends Component {
                       accessibilityLabel="Tap here to submit" />
             </View>
           </View>
-          <View style={[FlexStyles.flex, FlexStyles.flexJustifyCenter]}>
+          <View style={[FlexStyles.flex, FlexStyles.justifyCenter]}>
             <Button style={styles.submitButton}
                     onPress={this.showHint}
                     title="Hint"
                     color="skyblue"
                     accessibilityLabel="Tap here for a hint" />
           </View>
-          <View style={[FlexStyles.flex, FlexStyles.flexJustifyCenter]}>
+          <View style={[FlexStyles.flex, FlexStyles.justifyCenter]}>
             <Button style={styles.submitButton}
                     onPress={this.generateNewQuestion}
                     title="New Question"

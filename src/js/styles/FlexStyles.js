@@ -7,10 +7,10 @@ export default FlexStyles = StyleSheet.create({
   flexRow: {
     flexDirection: "row",
   },
-  flexAlignCenter: {
+  alignCenter: {
     alignItems: "center",
   },
-  flexJustifyCenter: {
+  justifyCenter: {
     justifyContent: "center",
   },
 });
