@@ -9,6 +9,7 @@ import {
 
 import FlexSpace from "./components/layout/FlexSpace";
 import QuestionDisplay from "./components/question/QuestionDisplay";
+import StatusMessage from "./components/answer/StatusMessage";
 
 import FlexStyles from "./styles/FlexStyles";
 import TextStyles from "./styles/TextStyles";
@@ -82,9 +83,7 @@ export default class Application extends Component {
         <View style={FlexStyles.flex}>
           <FlexSpace />
           <QuestionDisplay question={this.state.question.join(" ")} />
-          <View style={[FlexStyles.flex, FlexStyles.alignCenter, FlexStyles.justifyCenter]}>
-            <Text style={[TextStyles.size32, TextStyles.alignCenter]}>{statusMessage}</Text>
-          </View>
+          <StatusMessage message={statusMessage} />
         </View>
         {/* Answer Area */}
         <View style={FlexStyles.flex}>
