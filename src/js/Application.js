@@ -8,6 +8,7 @@ import {
 } from "react-native";
 
 import FlexSpace from "./components/layout/FlexSpace";
+import QuestionDisplay from "./components/question/QuestionDisplay";
 
 import FlexStyles from "./styles/FlexStyles";
 import TextStyles from "./styles/TextStyles";
@@ -80,9 +81,7 @@ export default class Application extends Component {
         {/* Question Area */}
         <View style={FlexStyles.flex}>
           <FlexSpace />
-          <View style={[FlexStyles.flex, FlexStyles.alignCenter, FlexStyles.justifyCenter]}>
-            <Text style={[TextStyles.size32, TextStyles.alignCenter]}>{this.state.question.join(" ")}</Text>
-          </View>
+          <QuestionDisplay question={this.state.question.join(" ")} />
           <View style={[FlexStyles.flex, FlexStyles.alignCenter, FlexStyles.justifyCenter]}>
             <Text style={[TextStyles.size32, TextStyles.alignCenter]}>{statusMessage}</Text>
           </View>
