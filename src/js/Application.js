@@ -10,6 +10,7 @@ import {
 import FlexSpace from "./components/layout/FlexSpace";
 
 import FlexStyles from "./styles/FlexStyles";
+import TextStyles from "./styles/TextStyles";
 
 export default class Application extends Component {
   constructor (props) {
@@ -65,13 +66,12 @@ export default class Application extends Component {
   }
   
   render () {
-    let answerMessage = null;
-    
+    let statusMessage = null;
     if (this.state.answer_is_submitted) {
       if (this.state.submitted_answer === this.state.correct_answer) {
-        answerMessage = <Text style={styles.text}>Correct! Answer: {this.state.correct_answer}</Text>;
+        statusMessage = "Correct! Answer: " + this.state.correct_answer;
       } else {
-        answerMessage = <Text style={styles.text}>Incorrect! Answer: {this.state.correct_answer}</Text>;
+        statusMessage = "Incorrect! Answer: " + this.state.correct_answer;
       }
     }
 
@@ -81,17 +81,17 @@ export default class Application extends Component {
         <View style={FlexStyles.flex}>
           <FlexSpace />
           <View style={[FlexStyles.flex, FlexStyles.flexAlignCenter, FlexStyles.flexJustifyCenter]}>
-            <Text style={styles.text}>{this.state.question.join(" ")}</Text>
+            <Text style={[TextStyles.size32, TextStyles.alignCenter]}>{this.state.question.join(" ")}</Text>
           </View>
           <View style={[FlexStyles.flex, FlexStyles.flexAlignCenter, FlexStyles.flexJustifyCenter]}>
-            { answerMessage }
+            <Text style={[TextStyles.size32, TextStyles.alignCenter]}>{statusMessage}</Text>
           </View>
         </View>
         {/* Answer Area */}
         <View style={FlexStyles.flex}>
           <View style={[FlexStyles.flex, FlexStyles.flexJustifyCenter]}>
             <View style={[FlexStyles.flex, FlexStyles.flexRow, FlexStyles.flexAlignCenter, FlexStyles.flexJustifyCenter]}>
-              <TextInput style={[styles.text, styles.answerForm]}
+              <TextInput style={[TextStyles.size32, TextStyles.alignCenter, styles.answerForm]}
                          underlineColorAndroid="transparent"
                          placeholder="Answer"
                          keyboardType="numeric"
@@ -146,9 +146,5 @@ const styles = StyleSheet.create({
     marginTop: 8,
     marginBottom: 8,
     padding: 4,
-  },
-  text: {
-    fontSize: 32,
-    textAlign: "center",
   },
 });
