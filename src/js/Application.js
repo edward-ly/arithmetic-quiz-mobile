@@ -6,7 +6,10 @@ import {
   TextInput,
   View,
 } from "react-native";
+
 import FlexSpace from "./components/layout/FlexSpace";
+
+import FlexStyles from "./styles/FlexStyles";
 
 export default class Application extends Component {
   constructor (props) {
@@ -75,19 +78,19 @@ export default class Application extends Component {
     return (
       <View style={styles.mainPageContainer}>
         {/* Question Area */}
-        <View style={styles.flex}>
+        <View style={FlexStyles.flex}>
           <FlexSpace />
-          <View style={styles.flexText}>
+          <View style={[FlexStyles.flex, FlexStyles.flexAlignCenter, FlexStyles.flexJustifyCenter]}>
             <Text style={styles.text}>{this.state.question.join(" ")}</Text>
           </View>
-          <View style={styles.flexText}>
+          <View style={[FlexStyles.flex, FlexStyles.flexAlignCenter, FlexStyles.flexJustifyCenter]}>
             { answerMessage }
           </View>
         </View>
         {/* Answer Area */}
-        <View style={styles.flex}>
-          <View style={styles.flexJustifyCenter}>
-            <View style={styles.flexRow}>
+        <View style={FlexStyles.flex}>
+          <View style={[FlexStyles.flex, FlexStyles.flexJustifyCenter]}>
+            <View style={[FlexStyles.flex, FlexStyles.flexRow, FlexStyles.flexAlignCenter, FlexStyles.flexJustifyCenter]}>
               <TextInput style={[styles.text, styles.answerForm]}
                          underlineColorAndroid="transparent"
                          placeholder="Answer"
@@ -100,14 +103,14 @@ export default class Application extends Component {
                       accessibilityLabel="Tap here to submit" />
             </View>
           </View>
-          <View style={styles.flexJustifyCenter}>
+          <View style={[FlexStyles.flex, FlexStyles.flexJustifyCenter]}>
             <Button style={styles.submitButton}
                     onPress={this.showHint}
                     title="Hint"
                     color="skyblue"
                     accessibilityLabel="Tap here for a hint" />
           </View>
-          <View style={styles.flexJustifyCenter}>
+          <View style={[FlexStyles.flex, FlexStyles.flexJustifyCenter]}>
             <Button style={styles.submitButton}
                     onPress={this.generateNewQuestion}
                     title="New Question"
@@ -123,24 +126,6 @@ export default class Application extends Component {
 }
 
 const styles = StyleSheet.create({
-  flex: {
-    flex: 1,
-  },
-  flexJustifyCenter: {
-    flex: 1,
-    justifyContent: "center",
-  },
-  flexRow: {
-    flex: 1,
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  flexText: {
-    flex: 1,
-    alignItems: "center",
-    justifyContent: "center",
-  },
   mainPageContainer: {
     flex: 1,
     backgroundColor: '#fff',
