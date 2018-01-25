@@ -1,12 +1,7 @@
 import React, { Component } from "react";
-import {
-  Button,
-  StyleSheet,
-  Text,
-  TextInput,
-  View,
-} from "react-native";
+import { Button, StyleSheet, View } from "react-native";
 
+import AnswerForm from "./components/answer/AnswerForm";
 import FlexSpace from "./components/layout/FlexSpace";
 import QuestionDisplay from "./components/question/QuestionDisplay";
 import StatusMessage from "./components/answer/StatusMessage";
@@ -119,19 +114,8 @@ export default class Application extends Component {
         </View>
         {/* Answer Area */}
         <View style={FlexStyles.flex}>
-          <View style={[FlexStyles.flex, FlexStyles.justifyCenter]}>
-            <View style={[FlexStyles.flex, FlexStyles.flexRow, FlexStyles.alignCenter, FlexStyles.justifyCenter]}>
-              <TextInput style={[TextStyles.size32, TextStyles.alignCenter, styles.answerForm]}
-                         underlineColorAndroid="transparent"
-                         placeholder="Answer"
-                         keyboardType="numeric"
-                         onChangeText={ text => this.updateAnswer(text) } />
-              <Button onPress={this.submitAnswer}
-                      title="Submit"
-                      color="green"
-                      accessibilityLabel="Tap here to submit" />
-            </View>
-          </View>
+          <AnswerForm onChangeText={text => this.updateAnswer(text)}
+                      onSubmit={this.submitAnswer} />
           <View style={[FlexStyles.flex, FlexStyles.justifyCenter]}>
             <Button onPress={this.showHint}
                     title="Hint"
@@ -159,13 +143,5 @@ const styles = StyleSheet.create({
     paddingTop: 24,
     paddingRight: 12,
     paddingLeft: 12,
-  },
-  answerForm: {
-    flex: 1,
-    marginTop: 8,
-    marginBottom: 8,
-    borderColor: "gray",
-    borderWidth: 2,
-    padding: 4,
   },
 });
