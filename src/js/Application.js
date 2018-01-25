@@ -126,23 +126,20 @@ export default class Application extends Component {
                          placeholder="Answer"
                          keyboardType="numeric"
                          onChangeText={ text => this.updateAnswer(text) } />
-              <Button style={styles.submitButton}
-                      onPress={this.submitAnswer}
+              <Button onPress={this.submitAnswer}
                       title="Submit"
                       color="green"
                       accessibilityLabel="Tap here to submit" />
             </View>
           </View>
           <View style={[FlexStyles.flex, FlexStyles.justifyCenter]}>
-            <Button style={styles.submitButton}
-                    onPress={this.showHint}
+            <Button onPress={this.showHint}
                     title="Hint"
                     color="skyblue"
                     accessibilityLabel="Tap here for a hint" />
           </View>
           <View style={[FlexStyles.flex, FlexStyles.justifyCenter]}>
-            <Button style={styles.submitButton}
-                    onPress={this.generateNewQuestion}
+            <Button onPress={this.generateNewQuestion}
                     title="New Question"
                     color="orange"
                     accessibilityLabel="Tap here to generate a new question" />
@@ -169,12 +166,6 @@ const styles = StyleSheet.create({
     marginBottom: 8,
     borderColor: "gray",
     borderWidth: 2,
-    padding: 4,
-  },
-  submitButton: {
-    flex: 1,
-    marginTop: 8,
-    marginBottom: 8,
     padding: 4,
   },
 });
