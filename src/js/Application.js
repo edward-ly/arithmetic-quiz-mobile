@@ -14,6 +14,8 @@ import StatusMessage from "./components/answer/StatusMessage";
 import FlexStyles from "./styles/FlexStyles";
 import TextStyles from "./styles/TextStyles";
 
+const OPERATIONS = ["+", "-", "*", "/", "^"];
+
 export default class Application extends Component {
   constructor (props) {
     super(props);
@@ -22,22 +24,49 @@ export default class Application extends Component {
       correct_answer: "",
       answer_is_submitted: false,
       question: [],
-      notation: "INFIX",
+      notation: "POSTFIX",
       times_submitted: 0,
     };
     
+    this.generateNewQuestion = this.generateNewQuestion.bind(this);
     this.submitAnswer = this.submitAnswer.bind(this);
   }
   
   componentDidMount () {
-    this.setState({
-      question: this.generateNewQuestion(),
-    });
+    this.generateNewQuestion();
   }
-  
+
+  generateRandomInteger () {
+    return Math.floor(Math.random() * 9);
+  }
+
+  generateRandomOperation () {
+    let i = Math.floor(Math.random() * 5);
+    return OPERATIONS[i];
+  }
+
+  expressionIsValid (question) {
+    // Check expression for errors (e.g. division doesn't return an integer or 0^0 produced).
+    return true;
+  }
+
   generateNewQuestion () {
     // Randomly generate a new expression and update state.
-    return [1, 2, 3, "+", "*"];
+    let number_of_operations = 2;
+    let question = [1, 2, 3, "+", "*"];
+    // let question_integers = [];
+    // let question_operations = [];
+    
+    // for (let i = 0; i < number_of_operations + 1; i++) {
+    //   question_integers.push(this.generateRandomInteger());
+    // }
+    // for (let i = 0; i < number_of_operations; i++) {
+    //   question_operations.push(this.generateRandomOperation());
+    // }
+
+    this.setState({
+      question: question,
+    });
   }
   
   calculateAnswer (question) {
