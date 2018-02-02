@@ -1,9 +1,10 @@
 import React, { Component } from "react";
-import { Button, StyleSheet, View } from "react-native";
+import { StyleSheet, View } from "react-native";
 
 import AnswerForm from "./components/answer/AnswerForm";
 import FlexSpace from "./components/layout/FlexSpace";
 import HintButton from "./components/answer/HintButton";
+import NextQuestionButton from "./components/question/NextQuestionButton";
 import QuestionDisplay from "./components/question/QuestionDisplay";
 import StatusMessage from "./components/answer/StatusMessage";
 
@@ -118,12 +119,7 @@ export default class Application extends Component {
           <AnswerForm onChangeText={text => this.updateAnswer(text)}
                       onSubmit={this.submitAnswer} />
           <HintButton onPress={this.showHint} />
-          <View style={[FlexStyles.flex, FlexStyles.justifyCenter]}>
-            <Button onPress={this.generateNewQuestion}
-                    title="New Question"
-                    color="orange"
-                    accessibilityLabel="Tap here to generate a new question" />
-          </View>
+          <NextQuestionButton onPress={this.generateNewQuestion} />
         </View>
         {/* Space for Keyboard */}
         <FlexSpace />
