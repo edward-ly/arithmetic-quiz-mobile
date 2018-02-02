@@ -12,8 +12,6 @@ import FlexStyles from "./styles/FlexStyles";
 import TextStyles from "./styles/TextStyles";
 import ViewStyles from "./styles/ViewStyles";
 
-const OPERATIONS = ["+", "-", "*", "/", "^"];
-
 export default class Application extends Component {
   constructor (props) {
     super(props);
@@ -34,41 +32,45 @@ export default class Application extends Component {
     this.generateNewQuestion();
   }
 
-  generateRandomInteger () {
-    return Math.floor(Math.random() * 9);
+  generateRandomInteger (range) {
+    // Returns a random integer from 0 to range - 1.
+    return Math.floor(Math.random() * range);
   }
 
   generateRandomOperation () {
-    let i = Math.floor(Math.random() * 5);
-    return OPERATIONS[i];
-  }
-
-  expressionIsValid (question) {
-    // Check expression for errors (e.g. division doesn't return an integer or 0^0 produced).
-    return true;
+    // Return one of the operations from the list.
+    const operations = ["+", "-", "*", "/", "^"];
+    let i = this.generateRandomInteger(operations.length);
+    return operations[i];
   }
 
   generateNewQuestion () {
     // Randomly generate a new expression and update state.
-    let number_of_operations = 2;
+    let number_of_operations = 2; // TODO: value to change with user settings
     let question = [1, 2, 3, "+", "*"];
     // let question_integers = [];
     // let question_operations = [];
-    
-    // for (let i = 0; i < number_of_operations + 1; i++) {
-    //   question_integers.push(this.generateRandomInteger());
-    // }
-    // for (let i = 0; i < number_of_operations; i++) {
-    //   question_operations.push(this.generateRandomOperation());
-    // }
+    let answer = undefined;
+
+    while (answer === undefined) {
+      // for (let i = 0; i < number_of_operations + 1; i++) {
+      //   question_integers.push(this.generateRandomInteger());
+      // }
+      // for (let i = 0; i < number_of_operations; i++) {
+      //   question_operations.push(this.generateRandomOperation());
+      // }
+      answer = this.calculateAnswer(question);
+    }
 
     this.setState({
       question: question,
+      correct_answer: answer,
     });
   }
   
   calculateAnswer (question) {
     // Parse question array and return the answer (as string).
+    // Return undefined if answer is not valid (e.g. division by 0).
     return "5";
   }
   
@@ -87,7 +89,6 @@ export default class Application extends Component {
     let { submitted_answer } = this.state;
     if (submitted_answer && submitted_answer.length) {
       this.setState({
-        correct_answer: this.calculateAnswer(this.state.question),
         answer_is_submitted: true,
         times_submitted: this.state.times_submitted + 1,
       });
