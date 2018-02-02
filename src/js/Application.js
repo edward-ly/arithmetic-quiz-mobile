@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { StyleSheet, View } from "react-native";
+import { View } from "react-native";
 
 import AnswerForm from "./components/answer/AnswerForm";
 import FlexSpace from "./components/layout/FlexSpace";
@@ -10,6 +10,7 @@ import StatusMessage from "./components/answer/StatusMessage";
 
 import FlexStyles from "./styles/FlexStyles";
 import TextStyles from "./styles/TextStyles";
+import ViewStyles from "./styles/ViewStyles";
 
 const OPERATIONS = ["+", "-", "*", "/", "^"];
 
@@ -107,7 +108,7 @@ export default class Application extends Component {
     }
 
     return (
-      <View style={styles.mainPageContainer}>
+      <View style={ViewStyles.mainPageContainer}>
         {/* Question Area */}
         <View style={FlexStyles.flex}>
           <FlexSpace />
@@ -127,13 +128,3 @@ export default class Application extends Component {
     );
   }
 }
-
-const styles = StyleSheet.create({
-  mainPageContainer: {
-    flex: 1,
-    backgroundColor: '#fff',
-    paddingTop: 24,
-    paddingRight: 12,
-    paddingLeft: 12,
-  },
-});
