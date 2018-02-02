@@ -3,6 +3,7 @@ import { Button, StyleSheet, View } from "react-native";
 
 import AnswerForm from "./components/answer/AnswerForm";
 import FlexSpace from "./components/layout/FlexSpace";
+import HintButton from "./components/answer/HintButton";
 import QuestionDisplay from "./components/question/QuestionDisplay";
 import StatusMessage from "./components/answer/StatusMessage";
 
@@ -116,12 +117,7 @@ export default class Application extends Component {
         <View style={FlexStyles.flex}>
           <AnswerForm onChangeText={text => this.updateAnswer(text)}
                       onSubmit={this.submitAnswer} />
-          <View style={[FlexStyles.flex, FlexStyles.justifyCenter]}>
-            <Button onPress={this.showHint}
-                    title="Hint"
-                    color="skyblue"
-                    accessibilityLabel="Tap here for a hint" />
-          </View>
+          <HintButton onPress={this.showHint} />
           <View style={[FlexStyles.flex, FlexStyles.justifyCenter]}>
             <Button onPress={this.generateNewQuestion}
                     title="New Question"
