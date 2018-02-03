@@ -24,7 +24,8 @@ export default class Application extends Component {
       question: [],
       hint: [],
       show_hint: false,
-      notation: "POSTFIX",
+      notation: "POSTFIX", // TODO: value to change with user settings
+      number_of_operations: 2, // TODO: value to change with user settings
       times_submitted: 0,
     };
     
@@ -39,9 +40,9 @@ export default class Application extends Component {
 
   generateNewQuestion () {
     // Randomly generate a new expression and update state.
-    let number_of_operations = 2; // TODO: value to change with user settings
+    let { number_of_operations, notation } = this.state;
     let answer = math.generateRandomInteger(41, -20).toString();
-    let { question, hint } = math.generateRandomExpression(answer, number_of_operations, this.state.notation);
+    let { question, hint } = math.generateRandomExpression(answer, number_of_operations, notation);
 
     this.setState({
       question: question,
