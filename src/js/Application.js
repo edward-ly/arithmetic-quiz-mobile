@@ -37,62 +37,8 @@ export default class Application extends Component {
   generateNewQuestion () {
     // Randomly generate a new expression and update state.
     let number_of_operations = 2; // TODO: value to change with user settings
-    let question = [];
     let answer = math.generateRandomInteger(41, -20).toString();
-    question.push(answer);
-
-    // Choose a number in the question array and replace it with an expression with that number as the result.
-    for (let i = 0; i < number_of_operations; i++) {
-      let sub_answer = NaN;
-      let sub_answer_index = 0;
-      while (isNaN(sub_answer)) {
-        sub_answer_index = math.generateRandomInteger(question.length, 0);
-        sub_answer = parseInt(question[sub_answer_index], 10);
-      }
-
-      let next_operation = math.generateRandomOperation();
-      let first_number = 0;
-      let second_number = math.generateRandomInteger(10, 1);
-      switch (next_operation) {
-        case "+":
-          second_number = math.generateRandomInteger(21, 0);
-          first_number = sub_answer - second_number;
-          break;
-        case "-":
-          second_number = math.generateRandomInteger(21, 0);
-          first_number = sub_answer + second_number;
-          break;
-        case "*":
-          while (sub_answer % second_number !== 0) {
-            second_number = math.generateRandomInteger(10, 1);
-          }
-          first_number = sub_answer / second_number;
-          break;
-        case "/":
-          first_number = sub_answer * second_number;
-          break;
-        // case "^":
-        //   second_number = math.generateRandomInteger(5, 1);
-        //   first_number = Math.pow(sub_answer, 1 / second_number);
-        //   break;
-      }
-
-      // Replace answer in question array with new values
-      let first_number_string = first_number.toString();
-      let second_number_string = second_number.toString();
-      switch (this.state.notation) {
-        case "POSTFIX":
-          question.splice(sub_answer_index, 1, first_number_string, second_number_string, next_operation);
-          break;
-        case "PREFIX":
-          question.splice(sub_answer_index, 1, next_operation, first_number_string, second_number_string);
-          break;
-        case "INFIX":
-        default:
-          // TODO: also add parentheses if required
-          question.splice(sub_answer_index, 1, first_number_string, next_operation, second_number_string);
-      }
-    }
+    let question = math.generateRandomExpression(answer, number_of_operations, this.state.notation);
 
     this.setState({
       question: question,
