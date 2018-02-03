@@ -16,15 +16,12 @@ export default class QuestionDisplay extends Component {
     const hint_colors = ["red", "orange", "yellow", "green", "blue", "purple"];
     let { question, hint, showHint } = this.props;
     let question_display = question.map((item, i) => {
-      return (
-        <Text key={i}
-              style={{ fontSize: 32,
-                       textAlign: "center",
-                       margin: 6,
-                       color: showHint ? hint_colors[hint[i]] : "black" }}>
-          { item }
-        </Text>
-      );
+      let styles = [TextStyles.size32, TextStyles.alignCenter, TextStyles.margin6];
+      if (showHint) {
+        styles.push({ color: hint_colors[hint[i]], });
+      };
+
+      return <Text key={i} style={styles}>{item}</Text>;
     });
 
     return (
