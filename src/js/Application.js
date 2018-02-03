@@ -23,11 +23,13 @@ export default class Application extends Component {
       answer_is_submitted: false,
       question: [],
       hint: [],
+      show_hint: false,
       notation: "POSTFIX",
       times_submitted: 0,
     };
     
     this.generateNewQuestion = this.generateNewQuestion.bind(this);
+    this.showHint = this.showHint.bind(this);
     this.submitAnswer = this.submitAnswer.bind(this);
   }
   
@@ -51,7 +53,9 @@ export default class Application extends Component {
   }
   
   showHint () {
-    // Highlight the correct order of operations by color-coding all the numbers and symbols.
+    this.setState({
+      show_hint: !this.state.show_hint,
+    });
   }
   
   updateAnswer (text) {
@@ -89,7 +93,9 @@ export default class Application extends Component {
         {/* Question Area */}
         <View style={FlexStyles.flex}>
           <FlexSpace />
-          <QuestionDisplay question={this.state.question.join(" ")} />
+          <QuestionDisplay question={this.state.question}
+                           showHint={this.state.show_hint}
+                           hint={this.state.hint} />
           <StatusMessage message={status_message} textStyles={message_styles} />
         </View>
         {/* Answer Area */}
