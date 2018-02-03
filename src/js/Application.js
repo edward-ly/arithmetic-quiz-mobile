@@ -78,18 +78,6 @@ export default class Application extends Component {
   }
   
   render () {
-    let status_message = null;
-    let message_styles = [];
-    if (this.state.answer_is_submitted) {
-      if (this.state.submitted_answer === this.state.correct_answer) {
-        status_message = "Correct! Answer: " + this.state.correct_answer;
-        message_styles.push(TextStyles.green);
-      } else {
-        status_message = "Incorrect! Answer: " + this.state.correct_answer;
-        message_styles.push(TextStyles.red);
-      }
-    }
-
     return (
       <View style={ViewStyles.mainPageContainer}>
         {/* Question Area */}
@@ -98,7 +86,9 @@ export default class Application extends Component {
           <QuestionDisplay question={this.state.question}
                            showHint={this.state.show_hint}
                            hint={this.state.hint} />
-          <StatusMessage message={status_message} textStyles={message_styles} />
+          <StatusMessage isSubmitted={this.state.answer_is_submitted}
+                         answerIsCorrect={this.state.submitted_answer === this.state.correct_answer}
+                         answer={this.state.correct_answer} />
         </View>
         {/* Answer Area */}
         <View style={FlexStyles.flex}>

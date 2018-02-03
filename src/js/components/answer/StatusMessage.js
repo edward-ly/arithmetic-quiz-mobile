@@ -7,19 +7,27 @@ import TextStyles from "../../styles/TextStyles";
 
 export default class StatusMessage extends Component {
   static propTypes = {
-    message: PropTypes.string,
-    textStyles: PropTypes.array,
+    isSubmitted: PropTypes.bool.isRequired,
+    answerIsCorrect: PropTypes.bool.isRequired,
+    answer: PropTypes.string,
   }
   
   render () {
-    let message = this.props.message || "";
-    let styles = this.props.textStyles || [];
-    let text_styles = [TextStyles.size32, TextStyles.alignCenter];
-    text_styles.push(styles);
+    let status_message = "";
+    let message_styles = [TextStyles.size32, TextStyles.alignCenter];
+    if (this.props.isSubmitted) {
+      if (this.props.answerIsCorrect) {
+        status_message = "Correct! Answer: " + this.props.answer;
+        message_styles.push(TextStyles.green);
+      } else {
+        status_message = "Incorrect! Answer: " + this.props.answer;
+        message_styles.push(TextStyles.red);
+      }
+    }
 
     return (
       <View style={[FlexStyles.flex, FlexStyles.alignCenter, FlexStyles.justifyCenter]}>
-        <Text style={text_styles}>{message}</Text>
+        <Text style={message_styles}>{status_message}</Text>
       </View>
     );
   }
