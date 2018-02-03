@@ -12,6 +12,8 @@ import FlexStyles from "./styles/FlexStyles";
 import TextStyles from "./styles/TextStyles";
 import ViewStyles from "./styles/ViewStyles";
 
+import math from "./utilities/math";
+
 export default class Application extends Component {
   constructor (props) {
     super(props);
@@ -32,23 +34,11 @@ export default class Application extends Component {
     this.generateNewQuestion();
   }
 
-  generateRandomInteger (range, start) {
-    // Returns a random integer from start to (start + range - 1).
-    return Math.floor(Math.random() * range) + start;
-  }
-
-  generateRandomOperation () {
-    // Return one of the operations from the list.
-    const operations = ["+", "-", "*", "/"];
-    let i = this.generateRandomInteger(operations.length, 0);
-    return operations[i];
-  }
-
   generateNewQuestion () {
     // Randomly generate a new expression and update state.
     let number_of_operations = 2; // TODO: value to change with user settings
     let question = [];
-    let answer = this.generateRandomInteger(41, -20).toString();
+    let answer = math.generateRandomInteger(41, -20).toString();
     question.push(answer);
 
     // Choose a number in the question array and replace it with an expression with that number as the result.
@@ -56,25 +46,25 @@ export default class Application extends Component {
       let sub_answer = NaN;
       let sub_answer_index = 0;
       while (isNaN(sub_answer)) {
-        sub_answer_index = this.generateRandomInteger(question.length, 0);
+        sub_answer_index = math.generateRandomInteger(question.length, 0);
         sub_answer = parseInt(question[sub_answer_index], 10);
       }
 
-      let next_operation = this.generateRandomOperation();
+      let next_operation = math.generateRandomOperation();
       let first_number = 0;
-      let second_number = this.generateRandomInteger(10, 1);
+      let second_number = math.generateRandomInteger(10, 1);
       switch (next_operation) {
         case "+":
-          second_number = this.generateRandomInteger(21, 0);
+          second_number = math.generateRandomInteger(21, 0);
           first_number = sub_answer - second_number;
           break;
         case "-":
-          second_number = this.generateRandomInteger(21, 0);
+          second_number = math.generateRandomInteger(21, 0);
           first_number = sub_answer + second_number;
           break;
         case "*":
           while (sub_answer % second_number !== 0) {
-            second_number = this.generateRandomInteger(10, 1);
+            second_number = math.generateRandomInteger(10, 1);
           }
           first_number = sub_answer / second_number;
           break;
@@ -82,7 +72,7 @@ export default class Application extends Component {
           first_number = sub_answer * second_number;
           break;
         // case "^":
-        //   second_number = this.generateRandomInteger(5, 1);
+        //   second_number = math.generateRandomInteger(5, 1);
         //   first_number = Math.pow(sub_answer, 1 / second_number);
         //   break;
       }
