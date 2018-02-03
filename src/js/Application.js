@@ -32,46 +32,84 @@ export default class Application extends Component {
     this.generateNewQuestion();
   }
 
-  generateRandomInteger (range) {
-    // Returns a random integer from 0 to range - 1.
-    return Math.floor(Math.random() * range);
+  generateRandomInteger (range, start) {
+    // Returns a random integer from start to (start + range - 1).
+    return Math.floor(Math.random() * range) + start;
   }
 
   generateRandomOperation () {
     // Return one of the operations from the list.
-    const operations = ["+", "-", "*", "/", "^"];
-    let i = this.generateRandomInteger(operations.length);
+    const operations = ["+", "-", "*", "/"];
+    let i = this.generateRandomInteger(operations.length, 0);
     return operations[i];
   }
 
   generateNewQuestion () {
     // Randomly generate a new expression and update state.
     let number_of_operations = 2; // TODO: value to change with user settings
-    let question = [1, 2, 3, "+", "*"];
-    // let question_integers = [];
-    // let question_operations = [];
-    let answer = undefined;
+    let question = [];
+    let answer = this.generateRandomInteger(41, -20).toString();
+    question.push(answer);
 
-    while (answer === undefined) {
-      // for (let i = 0; i < number_of_operations + 1; i++) {
-      //   question_integers.push(this.generateRandomInteger());
-      // }
-      // for (let i = 0; i < number_of_operations; i++) {
-      //   question_operations.push(this.generateRandomOperation());
-      // }
-      answer = this.calculateAnswer(question);
+    // Choose a number in the question array and replace it with an expression with that number as the result.
+    for (let i = 0; i < number_of_operations; i++) {
+      let sub_answer = NaN;
+      let sub_answer_index = 0;
+      while (isNaN(sub_answer)) {
+        sub_answer_index = this.generateRandomInteger(question.length, 0);
+        sub_answer = parseInt(question[sub_answer_index], 10);
+      }
+
+      let next_operation = this.generateRandomOperation();
+      let first_number = 0;
+      let second_number = this.generateRandomInteger(10, 1);
+      switch (next_operation) {
+        case "+":
+          second_number = this.generateRandomInteger(21, 0);
+          first_number = sub_answer - second_number;
+          break;
+        case "-":
+          second_number = this.generateRandomInteger(21, 0);
+          first_number = sub_answer + second_number;
+          break;
+        case "*":
+          while (sub_answer % second_number !== 0) {
+            second_number = this.generateRandomInteger(10, 1);
+          }
+          first_number = sub_answer / second_number;
+          break;
+        case "/":
+          first_number = sub_answer * second_number;
+          break;
+        // case "^":
+        //   second_number = this.generateRandomInteger(5, 1);
+        //   first_number = Math.pow(sub_answer, 1 / second_number);
+        //   break;
+      }
+
+      // Replace answer in question array with new values
+      let first_number_string = first_number.toString();
+      let second_number_string = second_number.toString();
+      switch (this.state.notation) {
+        case "POSTFIX":
+          question.splice(sub_answer_index, 1, first_number_string, second_number_string, next_operation);
+          break;
+        case "PREFIX":
+          question.splice(sub_answer_index, 1, next_operation, first_number_string, second_number_string);
+          break;
+        case "INFIX":
+        default:
+          // TODO: also add parentheses if required
+          question.splice(sub_answer_index, 1, first_number_string, next_operation, second_number_string);
+      }
     }
 
     this.setState({
       question: question,
       correct_answer: answer,
+      answer_is_submitted: false,
+      times_submitted: 0,
     });
-  }
-  
-  calculateAnswer (question) {
-    // Parse question array and return the answer (as string).
-    // Return undefined if answer is not valid (e.g. division by 0).
-    return "5";
   }
   
   showHint () {
