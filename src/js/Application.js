@@ -31,6 +31,7 @@ export default class Application extends Component {
     
     this.generateNewQuestion = this.generateNewQuestion.bind(this);
     this.showHint = this.showHint.bind(this);
+    this.checkAnswer = this.checkAnswer.bind(this);
     this.submitAnswer = this.submitAnswer.bind(this);
   }
   
@@ -67,6 +68,10 @@ export default class Application extends Component {
     });
   }
   
+  checkAnswer () {
+    return this.state.submitted_answer === this.state.correct_answer;
+  }
+  
   submitAnswer () {
     let { submitted_answer } = this.state;
     if (submitted_answer && submitted_answer.length) {
@@ -87,7 +92,7 @@ export default class Application extends Component {
                            showHint={this.state.show_hint}
                            hint={this.state.hint} />
           <StatusMessage isSubmitted={this.state.answer_is_submitted}
-                         answerIsCorrect={this.state.submitted_answer === this.state.correct_answer}
+                         answerIsCorrect={this.checkAnswer()}
                          answer={this.state.correct_answer} />
         </View>
         {/* Answer Area */}
