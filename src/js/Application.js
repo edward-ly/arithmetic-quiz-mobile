@@ -48,6 +48,7 @@ export default class Application extends Component {
       question: question,
       hint: hint,
       correct_answer: answer,
+      show_hint: false,
       answer_is_submitted: false,
       times_submitted: 0,
     });
