@@ -13,10 +13,12 @@ export default math = {
 
   generateRandomExpression (answer_string, number_of_operations, notation) {
     let question = [];
+    let hint = [];
     question.push(answer_string);
+    hint.push(number_of_operations);
 
     // Choose a number in the array and replace it with three values whose expression results in that number.
-    for (let i = 0; i < number_of_operations; i++) {
+    for (let i = number_of_operations - 1; i >= 0; i--) {
       let sub_answer = NaN;
       let sub_answer_index = 0;
       while (isNaN(sub_answer)) {
@@ -66,8 +68,9 @@ export default math = {
           // TODO: also add parentheses where required.
           question.splice(sub_answer_index, 1, first_number_string, next_operation, second_number_string);
       }
+      hint.splice(sub_answer_index, 1, i, i, i);
     }
 
-    return question;
+    return { question, hint };
   },
 }
