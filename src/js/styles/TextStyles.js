@@ -22,4 +22,20 @@ export default TextStyles = StyleSheet.create({
   alignCenter: {
     textAlign: "center",
   },
+  // margin
+  margin0: {
+    margin: 0,
+  },
+  margin2: {
+    margin: 2,
+  },
+  margin4: {
+    margin: 4,
+  },
+  margin6: {
+    margin: 6,
+  },
+  margin8: {
+    margin: 8,
+  },
 });
