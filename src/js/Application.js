@@ -69,7 +69,9 @@ export default class Application extends Component {
   }
   
   checkAnswer () {
-    return this.state.submitted_answer === this.state.correct_answer;
+    let suggested_answer = parseInt(this.state.submitted_answer);
+    let correct_answer = parseInt(this.state.correct_answer);
+    return suggested_answer === correct_answer;
   }
   
   submitAnswer () {
