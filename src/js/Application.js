@@ -60,10 +60,14 @@ export default class Application extends Component {
     let answer = math.generateRandomInteger(41, -20).toString();
     let { question, hint } = math.generateRandomExpression(answer, number_of_operations, notation);
 
+    // Clear answer field.
+    this._answerField.setNativeProps({ text: '' });
+
     this.setState({
       question: question,
       hint: hint,
       correct_answer: answer,
+      submitted_answer: "",
       show_hint: false,
       answer_is_submitted: false,
       // times_submitted: 0,
@@ -117,7 +121,8 @@ export default class Application extends Component {
         </View>
         {/* Answer Area */}
         <View style={FlexStyles.flex}>
-          <AnswerForm onChangeText={text => this.updateAnswer(text)}
+          <AnswerForm inputRef={component => this._answerField = component}
+                      onChangeText={text => this.updateAnswer(text)}
                       onSubmit={this.submitAnswer} />
           <HintButton onPress={this.showHint} />
           <NextQuestionButton onPress={this.generateNewQuestion} />
