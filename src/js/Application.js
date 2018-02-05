@@ -1,14 +1,12 @@
 import React, { Component } from "react";
 import { View } from "react-native";
-import Toast from "react-native-root-toast";
 
 import AnswerForm from "./components/answer/AnswerForm";
 import FlexSpace from "./components/layout/FlexSpace";
 import HintButton from "./components/answer/HintButton";
 import NextQuestionButton from "./components/question/NextQuestionButton";
 import QuestionDisplay from "./components/question/QuestionDisplay";
-import SettingsButton from "./components/settings/SettingsButton";
-import SettingsModal from "./components/settings/SettingsModal";
+import SettingsView from "./components/settings/SettingsView";
 import StatusMessage from "./components/answer/StatusMessage";
 
 import FlexStyles from "./styles/FlexStyles";
@@ -30,12 +28,9 @@ export default class Application extends Component {
       notation: "POSTFIX",
       number_of_operations: 2,
       times_submitted: 0,
-      showSettingsModal: false,
     };
     
     this.generateNewQuestion = this.generateNewQuestion.bind(this);
-    this.openSettingsModal = this.openSettingsModal.bind(this);
-    this.closeSettingsModal = this.closeSettingsModal.bind(this);
     this.saveDifficultySetting = this.saveDifficultySetting.bind(this);
     this.saveNotationSetting = this.saveNotationSetting.bind(this);
     this.showHint = this.showHint.bind(this);
@@ -47,19 +42,6 @@ export default class Application extends Component {
     this.generateNewQuestion();
   }
 
-  openSettingsModal () {
-    this.setState({
-      showSettingsModal: true,
-    });
-  }
-
-  closeSettingsModal () {
-    Toast.show("Settings saved! Any changes will be applied on the next question.");
-    this.setState({
-      showSettingsModal: false,
-    });
-  }
-  
   saveDifficultySetting (value) {
     this.setState({
       number_of_operations: value,
@@ -122,7 +104,10 @@ export default class Application extends Component {
       <View style={ViewStyles.mainPageContainer}>
         {/* Question Area */}
         <View style={FlexStyles.flex}>
-          <SettingsButton onPress={this.openSettingsModal} />
+          <SettingsView saveDifficultySetting={this.saveDifficultySetting}
+                        saveNotationSetting={this.saveNotationSetting}
+                        currentDifficulty={this.state.number_of_operations}
+                        currentNotation={this.state.notation} />
           <QuestionDisplay question={this.state.question}
                            showHint={this.state.show_hint}
                            hint={this.state.hint} />
@@ -139,13 +124,6 @@ export default class Application extends Component {
         </View>
         {/* Space for Keyboard */}
         <FlexSpace />
-        {/* Modals */}
-        <SettingsModal showModal={this.state.showSettingsModal}
-                       closeModal={this.closeSettingsModal}
-                       saveDifficultySetting={this.saveDifficultySetting}
-                       saveNotationSetting={this.saveNotationSetting}
-                       currentDifficulty={this.state.number_of_operations}
-                       currentNotation={this.state.notation} />
       </View>
     );
   }
