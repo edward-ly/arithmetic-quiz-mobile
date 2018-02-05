@@ -27,7 +27,7 @@ export default class Application extends Component {
       show_hint: false,
       notation: "POSTFIX",
       number_of_operations: 2,
-      times_submitted: 0,
+      // times_submitted: 0,
     };
     
     this.generateNewQuestion = this.generateNewQuestion.bind(this);
@@ -66,7 +66,7 @@ export default class Application extends Component {
       correct_answer: answer,
       show_hint: false,
       answer_is_submitted: false,
-      times_submitted: 0,
+      // times_submitted: 0,
     });
   }
   
@@ -94,7 +94,7 @@ export default class Application extends Component {
     if (submitted_answer && submitted_answer.length) {
       this.setState({
         answer_is_submitted: true,
-        times_submitted: this.state.times_submitted + 1,
+        // times_submitted: this.state.times_submitted + 1,
       });
     }
   }
