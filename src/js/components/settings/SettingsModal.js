@@ -13,8 +13,7 @@ export default class SettingsModal extends Component {
   static propTypes = {
     showModal: PropTypes.bool.isRequired,
     closeModal: PropTypes.func.isRequired,
-    saveDifficultySetting: PropTypes.func.isRequired,
-    saveNotationSetting: PropTypes.func.isRequired,
+    closeModalWithoutSaving: PropTypes.func.isRequired,
     currentDifficulty: PropTypes.number.isRequired,
     currentNotation: PropTypes.string.isRequired,
   }
@@ -23,14 +22,40 @@ export default class SettingsModal extends Component {
     super(props);
     this.state = {
       currentDifficulty: this.props.currentDifficulty,
+      currentNotation: this.props.currentNotation,
     };
     
-    this.showDifficultyValue = this.showDifficultyValue.bind(this);
+    this.updateDifficultyValue = this.updateDifficultyValue.bind(this);
+    this.updateNotationValue = this.updateNotationValue.bind(this);
+    this.closeWithoutSaving = this.closeWithoutSaving.bind(this);
+    this.saveAndClose = this.saveAndClose.bind(this);
   }
 
-  showDifficultyValue (value) {
+  updateDifficultyValue (value) {
     this.setState({
       currentDifficulty: value,
+    });
+  }
+
+  updateNotationValue (value, index) {
+    this.setState({
+      currentNotation: value,
+    });
+  }
+
+  closeWithoutSaving () {
+    this.props.closeModalWithoutSaving();
+    this.setState({
+      currentDifficulty: this.props.currentDifficulty,
+      currentNotation: this.props.currentNotation,
+    });
+    this._difficultySlider.setNativeProps({ value: this.props.currentDifficulty });
+  }
+
+  saveAndClose () {
+    this.props.closeModal({
+      number_of_operations: this.state.currentDifficulty,
+      notation: this.state.currentNotation,
     });
   }
 
@@ -40,8 +65,8 @@ export default class SettingsModal extends Component {
 
     return (
       <Modal isVisible={this.props.showModal}
-             onBackdropPress={this.props.closeModal}
-             onRequestClose={this.props.closeModal}>
+             onBackdropPress={this.closeWithoutSaving}
+             onRequestClose={this.closeWithoutSaving}>
         <View style={FlexStyles.flex}>
           <FlexSpace />
           <View style={ViewStyles.modalContainer}>
@@ -52,18 +77,19 @@ export default class SettingsModal extends Component {
             <Slider minimumValue={2}
                     maximumValue={6}
                     step={1}
+                    ref={component => this._difficultySlider = component}
                     value={this.props.currentDifficulty}
-                    onValueChange={this.showDifficultyValue}
-                    onSlidingComplete={this.props.saveDifficultySetting} />
+                    onValueChange={this.updateDifficultyValue}
+                    onSlidingComplete={this.updateDifficultyValue} />
             <Text style={notationHeaderStyles}>Notation</Text>
-            <Picker onValueChange={this.props.saveNotationSetting}
+            <Picker onValueChange={this.updateNotationValue}
                     mode="dropdown"
-                    selectedValue={this.props.currentNotation}>
+                    selectedValue={this.state.currentNotation}>
               <Picker.Item label="Prefix (Polish)" value="PREFIX" />
               <Picker.Item label="Infix" value="INFIX" />
               <Picker.Item label="Postfix (Reverse Polish)" value="POSTFIX" />
             </Picker>
-            <Button onPress={this.props.closeModal}
+            <Button onPress={this.saveAndClose}
                     title="Save" />
           </View>
           <FlexSpace />
