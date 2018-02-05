@@ -8,4 +8,10 @@ export default ViewStyles = StyleSheet.create({
     paddingRight: 12,
     paddingLeft: 12,
   },
+  modalContainer: {
+    flex: 1,
+    backgroundColor: '#fff',
+    borderRadius: 8,
+    padding: 16,
+  },
 });
