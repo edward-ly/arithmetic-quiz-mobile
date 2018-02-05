@@ -31,8 +31,7 @@ export default class Application extends Component {
     };
     
     this.generateNewQuestion = this.generateNewQuestion.bind(this);
-    this.saveDifficultySetting = this.saveDifficultySetting.bind(this);
-    this.saveNotationSetting = this.saveNotationSetting.bind(this);
+    this.saveSettings = this.saveSettings.bind(this);
     this.showHint = this.showHint.bind(this);
     this.checkAnswer = this.checkAnswer.bind(this);
     this.submitAnswer = this.submitAnswer.bind(this);
@@ -42,15 +41,10 @@ export default class Application extends Component {
     this.generateNewQuestion();
   }
 
-  saveDifficultySetting (value) {
+  saveSettings (new_settings) {
     this.setState({
-      number_of_operations: value,
-    });
-  }
-
-  saveNotationSetting (value, index) {
-    this.setState({
-      notation: value,
+      number_of_operations: new_settings.number_of_operations,
+      notation: new_settings.notation,
     });
   }
 
@@ -108,8 +102,7 @@ export default class Application extends Component {
       <View style={ViewStyles.mainPageContainer}>
         {/* Question Area */}
         <View style={FlexStyles.flex}>
-          <SettingsView saveDifficultySetting={this.saveDifficultySetting}
-                        saveNotationSetting={this.saveNotationSetting}
+          <SettingsView saveSettings={this.saveSettings}
                         currentDifficulty={this.state.number_of_operations}
                         currentNotation={this.state.notation} />
           <QuestionDisplay question={this.state.question}
