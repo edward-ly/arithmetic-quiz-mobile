@@ -1,11 +1,12 @@
 import React, { Component } from "react";
-import { Button, ToastAndroid, View } from "react-native";
+import { ToastAndroid, View } from "react-native";
 
 import AnswerForm from "./components/answer/AnswerForm";
 import FlexSpace from "./components/layout/FlexSpace";
 import HintButton from "./components/answer/HintButton";
 import NextQuestionButton from "./components/question/NextQuestionButton";
 import QuestionDisplay from "./components/question/QuestionDisplay";
+import SettingsButton from "./components/settings/SettingsButton";
 import SettingsModal from "./components/settings/SettingsModal";
 import StatusMessage from "./components/answer/StatusMessage";
 
@@ -120,15 +121,7 @@ export default class Application extends Component {
       <View style={ViewStyles.mainPageContainer}>
         {/* Question Area */}
         <View style={FlexStyles.flex}>
-          <View style={FlexStyles.flex}>
-            <View style={[FlexStyles.flex, FlexStyles.flexRow, FlexStyles.alignCenter, FlexStyles.justifyCenter]}>
-              <FlexSpace flex={3} />
-              <View style={FlexStyles.flex}>
-                <Button onPress={this.openSettingsModal}
-                        title="Settings" />
-              </View>
-            </View>
-          </View>
+          <SettingsButton onPress={this.openSettingsModal} />
           <QuestionDisplay question={this.state.question}
                            showHint={this.state.show_hint}
                            hint={this.state.hint} />
