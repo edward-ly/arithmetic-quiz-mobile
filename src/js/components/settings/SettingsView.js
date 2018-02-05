@@ -10,8 +10,7 @@ import FlexStyles from "../../styles/FlexStyles";
 
 export default class SettingsView extends Component {
   static propTypes = {
-    saveDifficultySetting: PropTypes.func.isRequired,
-    saveNotationSetting: PropTypes.func.isRequired,
+    saveSettings: PropTypes.func.isRequired,
     currentDifficulty: PropTypes.number.isRequired,
     currentNotation: PropTypes.string.isRequired,
   }
@@ -24,6 +23,7 @@ export default class SettingsView extends Component {
     
     this.openSettingsModal = this.openSettingsModal.bind(this);
     this.closeSettingsModal = this.closeSettingsModal.bind(this);
+    this.closeSettingsModalWithoutSaving = this.closeSettingsModalWithoutSaving.bind(this);
   }
   
   openSettingsModal () {
@@ -32,21 +32,27 @@ export default class SettingsView extends Component {
     });
   }
 
-  closeSettingsModal () {
+  closeSettingsModal (new_settings) {
+    this.props.saveSettings(new_settings);
     Toast.show("Settings saved! Any changes will be applied on the next question.");
     this.setState({
       showSettingsModal: false,
     });
   }
   
+  closeSettingsModalWithoutSaving () {
+    this.setState({
+      showSettingsModal: false,
+    });
+  }
+
   render () {
     return (
       <View style={FlexStyles.flex}>
         <SettingsButton onPress={this.openSettingsModal} />
         <SettingsModal showModal={this.state.showSettingsModal}
                        closeModal={this.closeSettingsModal}
-                       saveDifficultySetting={this.props.saveDifficultySetting}
-                       saveNotationSetting={this.props.saveNotationSetting}
+                       closeModalWithoutSaving={this.closeSettingsModalWithoutSaving}
                        currentDifficulty={this.props.currentDifficulty}
                        currentNotation={this.props.currentNotation} />
       </View>
