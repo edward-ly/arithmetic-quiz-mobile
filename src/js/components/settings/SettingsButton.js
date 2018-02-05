@@ -13,13 +13,11 @@ export default class SettingsButton extends Component {
   
   render () {
     return (
-      <View style={FlexStyles.flex}>
-        <View style={[FlexStyles.flex, FlexStyles.flexRow, FlexStyles.alignCenter, FlexStyles.justifyCenter]}>
-          <FlexSpace flex={3} />
-          <View style={FlexStyles.flex}>
-            <Button onPress={this.props.onPress}
-                    title="Settings" />
-          </View>
+      <View style={[FlexStyles.flex, FlexStyles.flexRow, FlexStyles.alignCenter, FlexStyles.justifyCenter]}>
+        <FlexSpace flex={3} />
+        <View style={FlexStyles.flex}>
+          <Button onPress={this.props.onPress}
+                  title="Settings" />
         </View>
       </View>
     );
