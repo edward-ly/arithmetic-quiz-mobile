@@ -7,6 +7,7 @@ import TextStyles from "../../styles/TextStyles";
 
 export default class AnswerForm extends Component {
   static propTypes = {
+    inputRef: PropTypes.func.isRequired,
     onChangeText: PropTypes.func.isRequired,
     onSubmit: PropTypes.func.isRequired,
   }
@@ -16,6 +17,7 @@ export default class AnswerForm extends Component {
       <View style={[FlexStyles.flex, FlexStyles.justifyCenter]}>
         <View style={[FlexStyles.flex, FlexStyles.flexRow, FlexStyles.alignCenter, FlexStyles.justifyCenter]}>
           <TextInput style={[TextStyles.size32, TextStyles.alignCenter, styles.answerForm]}
+                     ref={this.props.inputRef}
                      underlineColorAndroid="transparent"
                      placeholder="Answer"
                      keyboardType="numeric"
