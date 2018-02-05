@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-import { ToastAndroid, View } from "react-native";
+import { View } from "react-native";
+import Toast from "react-native-root-toast";
 
 import AnswerForm from "./components/answer/AnswerForm";
 import FlexSpace from "./components/layout/FlexSpace";
@@ -53,7 +54,7 @@ export default class Application extends Component {
   }
 
   closeSettingsModal () {
-    ToastAndroid.show("Any changes will be applied on the next question.", ToastAndroid.SHORT);
+    Toast.show("Settings saved! Any changes will be applied on the next question.");
     this.setState({
       showSettingsModal: false,
     });
