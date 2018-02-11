@@ -53,7 +53,7 @@ export default class Application extends Component {
     let { question, hint } = math.generateRandomExpression(answer, number_of_operations, notation);
 
     // Clear answer field.
-    this._answerField.setNativeProps({ text: '' });
+    this._answerField.setNativeProps({ text: "" });
 
     this.setState({
       question: question,
