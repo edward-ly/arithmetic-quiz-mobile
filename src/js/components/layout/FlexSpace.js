@@ -6,7 +6,7 @@ import FlexView from "./FlexView";
 export default class FlexSpace extends Component {
   static propTypes = {
     flex: PropTypes.number,
-    styles: PropTypes.number, // style object disguised as int
+    styles: PropTypes.array, // array of style objects
   }
   
   render () {
