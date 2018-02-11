@@ -9,8 +9,6 @@ import QuestionDisplay from "./components/question/QuestionDisplay";
 import SettingsView from "./components/settings/SettingsView";
 import StatusMessage from "./components/answer/StatusMessage";
 
-import FlexStyles from "./styles/FlexStyles";
-import TextStyles from "./styles/TextStyles";
 import ViewStyles from "./styles/ViewStyles";
 
 import math from "./utilities/math";
