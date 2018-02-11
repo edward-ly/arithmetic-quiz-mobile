@@ -1,8 +1,8 @@
 import React, { Component } from "react";
-import { View } from "react-native";
 
 import AnswerForm from "./components/answer/AnswerForm";
 import FlexSpace from "./components/layout/FlexSpace";
+import FlexView from "./components/layout/FlexView";
 import HintButton from "./components/answer/HintButton";
 import NextQuestionButton from "./components/question/NextQuestionButton";
 import QuestionDisplay from "./components/question/QuestionDisplay";
@@ -99,9 +99,9 @@ export default class Application extends Component {
   
   render () {
     return (
-      <View style={ViewStyles.mainPageContainer}>
+      <FlexView styles={[ViewStyles.mainPageContainer]}>
         {/* Question Area */}
-        <View style={FlexStyles.flex}>
+        <FlexView>
           <SettingsView saveSettings={this.saveSettings}
                         currentDifficulty={this.state.number_of_operations}
                         currentNotation={this.state.notation} />
@@ -111,18 +111,18 @@ export default class Application extends Component {
           <StatusMessage isSubmitted={this.state.answer_is_submitted}
                          answerIsCorrect={this.checkAnswer()}
                          answer={this.state.correct_answer} />
-        </View>
+        </FlexView>
         {/* Answer Area */}
-        <View style={FlexStyles.flex}>
+        <FlexView>
           <AnswerForm inputRef={component => this._answerField = component}
                       onChangeText={text => this.updateAnswer(text)}
                       onSubmit={this.submitAnswer} />
           <HintButton onPress={this.showHint} />
           <NextQuestionButton onPress={this.generateNewQuestion} />
-        </View>
+        </FlexView>
         {/* Space for Keyboard */}
         <FlexSpace />
-      </View>
+      </FlexView>
     );
   }
 }
