@@ -25,7 +25,7 @@ export default class Application extends Component {
       question: [],
       hint: [],
       show_hint: false,
-      notation: "POSTFIX",
+      notation: "INFIX",
       number_of_operations: 2,
       // times_submitted: 0,
     };
