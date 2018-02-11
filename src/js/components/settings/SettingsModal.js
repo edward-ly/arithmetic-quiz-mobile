@@ -1,9 +1,10 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import { Button, Picker, Slider, Text, View } from "react-native";
+import { Button, Picker, Slider, Text } from "react-native";
 import Modal from "react-native-modal";
 
 import FlexSpace from "../layout/FlexSpace";
+import FlexView from "../layout/FlexView";
 
 import FlexStyles from "../../styles/FlexStyles";
 import TextStyles from "../../styles/TextStyles";
@@ -67,13 +68,13 @@ export default class SettingsModal extends Component {
       <Modal isVisible={this.props.showModal}
              onBackdropPress={this.closeWithoutSaving}
              onRequestClose={this.closeWithoutSaving}>
-        <View style={FlexStyles.flex}>
+        <FlexView>
           <FlexSpace />
-          <View style={ViewStyles.modalContainer}>
-            <View style={[FlexStyles.flex, FlexStyles.flexRow, FlexStyles.justifyBetween]}>
+          <FlexView styles={[ViewStyles.modalContainer]}>
+            <FlexView styles={[FlexStyles.flexRow, FlexStyles.justifyBetween]}>
               <Text style={difficultyHeaderStyles}>Difficulty</Text>
               <Text style={difficultyHeaderStyles}>{this.state.currentDifficulty}</Text>
-            </View>
+            </FlexView>
             <Slider minimumValue={2}
                     maximumValue={6}
                     step={1}
@@ -91,9 +92,9 @@ export default class SettingsModal extends Component {
             </Picker>
             <Button onPress={this.saveAndClose}
                     title="Save" />
-          </View>
+          </FlexView>
           <FlexSpace />
-        </View>
+        </FlexView>
       </Modal>
     );
   }
