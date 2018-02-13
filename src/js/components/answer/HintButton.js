@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import { Button, View } from "react-native";
+import { Text, TouchableOpacity, View } from "react-native";
 
 import FlexStyles from "../../styles/FlexStyles";
 
@@ -12,10 +12,12 @@ export default class HintButton extends Component {
   render () {
     return (
       <View style={[FlexStyles.flex, FlexStyles.justifyCenter]}>
-        <Button onPress={this.props.onPress}
-                title="Hint"
-                color="skyblue"
-                accessibilityLabel="Tap here for a hint" />
+        <TouchableOpacity style={{ alignItems: "center", backgroundColor: "skyblue", padding: 10, borderColor: "#ccc", borderWidth: 2, }}
+                          onPress={this.props.onPress}>
+          <Text style={{ color: "white", fontSize: 24, }}>
+            Hint
+          </Text>
+        </TouchableOpacity>
       </View>
     );
   }

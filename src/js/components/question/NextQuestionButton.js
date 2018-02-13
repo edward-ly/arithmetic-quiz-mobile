@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import { Button, View } from "react-native";
+import { Text, TouchableOpacity, View } from "react-native";
 
 import FlexStyles from "../../styles/FlexStyles";
 
@@ -12,10 +12,12 @@ export default class NextQuestionButton extends Component {
   render () {
     return (
       <View style={[FlexStyles.flex, FlexStyles.justifyCenter]}>
-        <Button onPress={this.props.onPress}
-                title="New Question"
-                color="orange"
-                accessibilityLabel="Tap here to generate a new question" />
+        <TouchableOpacity style={{ alignItems: "center", backgroundColor: "orange", padding: 10, borderColor: "#ccc", borderWidth: 2, }}
+                          onPress={this.props.onPress}>
+          <Text style={{ color: "white", fontSize: 24, }}>
+            New Question
+          </Text>
+        </TouchableOpacity>
       </View>
     );
   }
