@@ -78,9 +78,8 @@ export default class SettingsModal extends Component {
              onBackdropPress={this.closeWithoutSaving}
              onRequestClose={this.closeWithoutSaving}>
         <FlexView>
-          <FlexSpace />
-          <FlexView flex={ this.state.orientation === "PORTRAIT" ? 1 : 10 } 
-                    styles={[ViewStyles.modalContainer]}>
+          { this.state.orientation === "PORTRAIT" ? <FlexSpace /> : null }
+          <FlexView styles={[ViewStyles.modalContainer]}>
             <FlexView>
               <FlexView styles={[FlexStyles.flexRow, FlexStyles.justifyBetween]}>
                 <Text style={headerStyles}>Difficulty</Text>
@@ -117,7 +116,7 @@ export default class SettingsModal extends Component {
               </TouchableOpacity>
             </FlexView>
           </FlexView>
-          <FlexSpace />
+          { this.state.orientation === "PORTRAIT" ? <FlexSpace /> : null }
         </FlexView>
       </Modal>
     );
