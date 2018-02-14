@@ -5,6 +5,7 @@ export default ViewStyles = StyleSheet.create({
     backgroundColor: "#fff",
     paddingTop: 24,
     paddingRight: 12,
+    paddingBottom: 12,
     paddingLeft: 12,
   },
   modalContainer: {
