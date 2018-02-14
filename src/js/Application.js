@@ -29,7 +29,7 @@ export default class Application extends Component {
       number_of_operations: 2,
       // times_submitted: 0,
       orientation: Platform.isPortrait() ? "PORTRAIT" : "LANDSCAPE",
-      devicetype: Platform.isTablet() ? "TABLET" : "PHONE",
+      device_type: Platform.isTablet() ? "TABLET" : "PHONE",
     };
     
     this.generateNewQuestion = this.generateNewQuestion.bind(this);
