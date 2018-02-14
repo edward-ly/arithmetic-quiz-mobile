@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Dimensions } from "react-native";
 
 import AnswerForm from "./components/answer/AnswerForm";
 import FlexSpace from "./components/layout/FlexSpace";
@@ -12,6 +13,7 @@ import StatusMessage from "./components/answer/StatusMessage";
 import ViewStyles from "./styles/ViewStyles";
 
 import math from "./utilities/math";
+import Platform from "./utilities/Platform";
 
 export default class Application extends Component {
   constructor (props) {
@@ -26,6 +28,8 @@ export default class Application extends Component {
       notation: "INFIX",
       number_of_operations: 2,
       // times_submitted: 0,
+      orientation: Platform.isPortrait() ? "PORTRAIT" : "LANDSCAPE",
+      devicetype: Platform.isTablet() ? "TABLET" : "PHONE",
     };
     
     this.generateNewQuestion = this.generateNewQuestion.bind(this);
@@ -33,10 +37,17 @@ export default class Application extends Component {
     this.showHint = this.showHint.bind(this);
     this.checkAnswer = this.checkAnswer.bind(this);
     this.submitAnswer = this.submitAnswer.bind(this);
+    Dimensions.addEventListener("change", this._orientationDidChange.bind(this));
   }
   
   componentDidMount () {
     this.generateNewQuestion();
+  }
+
+  _orientationDidChange () {
+    this.setState({
+      orientation: Platform.isPortrait() ? "PORTRAIT" : "LANDSCAPE",
+    });
   }
 
   saveSettings (new_settings) {
@@ -119,7 +130,10 @@ export default class Application extends Component {
           <NextQuestionButton onPress={this.generateNewQuestion} />
         </FlexView>
         {/* Space for Keyboard */}
-        <FlexSpace />
+        { this.state.orientation === "PORTRAIT" ?
+          <FlexSpace /> :
+          null
+        }
       </FlexView>
     );
   }
