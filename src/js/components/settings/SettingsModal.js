@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import { Button, Dimensions, Picker, Slider, Text } from "react-native";
+import { Dimensions, Picker, Slider, Text, TouchableOpacity } from "react-native";
 import Modal from "react-native-modal";
 
 import FlexSpace from "../layout/FlexSpace";
@@ -109,8 +109,12 @@ export default class SettingsModal extends Component {
               </Picker>
             </FlexView>
             <FlexView>
-              <Button onPress={this.saveAndClose}
-                      title="Save" />
+              <TouchableOpacity style={{ alignItems: "center", backgroundColor: "blue", padding: 6, borderColor: "#ccc", borderWidth: 2, }}
+                                onPress={this.saveAndClose}>
+                <Text style={{ color: "white", fontSize: 16, fontWeight: "bold", }}>
+                  SAVE
+                </Text>
+              </TouchableOpacity>
             </FlexView>
           </FlexView>
           <FlexSpace />
