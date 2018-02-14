@@ -84,6 +84,9 @@ export default math = {
                 // Ex. (1 - 2) - 4 != 1 - (2 - 4)
                 // Also clarifies precedence of "-" over "*" or "/" to the left
                 parentheses_is_required = true;
+              } else if (current_operation === "*" && previous_operation === "/") {
+                // Clarify precedence of "*" over "/" to the left
+                parentheses_is_required = true;
               } else if (current_operation === "+") {
                 if (previous_operation === "*" || previous_operation === "/") {
                   // Clarify precedence of "+" over "*" or "/" to the left
