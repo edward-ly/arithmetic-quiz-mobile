@@ -87,11 +87,9 @@ export default MathHelper = {
               } else if (current_operation === "*" && previous_operation === "/") {
                 // Clarify precedence of "*" over "/" to the left
                 parentheses_is_required = true;
-              } else if (current_operation === "+") {
-                if (previous_operation === "*" || previous_operation === "/") {
-                  // Clarify precedence of "+" over "*" or "/" to the left
-                  parentheses_is_required = true;
-                }
+              } else if (current_operation === "+" && previous_operation !== "+") {
+                // Clarify precedence of "+" over other operations to the left
+                parentheses_is_required = true;
               }
             }
 
