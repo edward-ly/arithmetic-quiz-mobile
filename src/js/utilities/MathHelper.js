@@ -1,6 +1,6 @@
 const OPERATIONS = ["+", "-", "*", "/"];
 
-export default math = {
+export default MathHelper = {
   generateRandomInteger (range, start) {
     // Returns a random integer from start to (start + range - 1).
     return Math.floor(Math.random() * range) + start;

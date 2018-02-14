@@ -12,7 +12,7 @@ import StatusMessage from "./components/answer/StatusMessage";
 
 import ViewStyles from "./styles/ViewStyles";
 
-import math from "./utilities/math";
+import MathHelper from "./utilities/MathHelper";
 import Platform from "./utilities/Platform";
 
 export default class Application extends Component {
@@ -60,8 +60,8 @@ export default class Application extends Component {
   generateNewQuestion () {
     // Randomly generate a new expression and update state.
     let { number_of_operations, notation } = this.state;
-    let answer = math.generateRandomInteger(41, -20).toString();
-    let { question, hint } = math.generateRandomExpression(answer, number_of_operations, notation);
+    let answer = MathHelper.generateRandomInteger(41, -20).toString();
+    let { question, hint } = MathHelper.generateRandomExpression(answer, number_of_operations, notation);
 
     // Clear answer field.
     this._answerField.setNativeProps({ text: "" });
