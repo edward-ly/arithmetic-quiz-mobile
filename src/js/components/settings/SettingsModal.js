@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import { Button, Picker, Slider, Text } from "react-native";
+import { Button, Dimensions, Picker, Slider, Text } from "react-native";
 import Modal from "react-native-modal";
 
 import FlexSpace from "../layout/FlexSpace";
@@ -9,6 +9,8 @@ import FlexView from "../layout/FlexView";
 import FlexStyles from "../../styles/FlexStyles";
 import TextStyles from "../../styles/TextStyles";
 import ViewStyles from "../../styles/ViewStyles";
+
+import Platform from "../../utilities/Platform";
 
 export default class SettingsModal extends Component {
   static propTypes = {
@@ -24,12 +26,20 @@ export default class SettingsModal extends Component {
     this.state = {
       currentDifficulty: this.props.currentDifficulty,
       currentNotation: this.props.currentNotation,
+      orientation: Platform.isPortrait() ? "PORTRAIT" : "LANDSCAPE",
     };
     
     this.updateDifficultyValue = this.updateDifficultyValue.bind(this);
     this.updateNotationValue = this.updateNotationValue.bind(this);
     this.closeWithoutSaving = this.closeWithoutSaving.bind(this);
     this.saveAndClose = this.saveAndClose.bind(this);
+    Dimensions.addEventListener("change", this._orientationDidChange.bind(this));
+  }
+
+  _orientationDidChange () {
+    this.setState({
+      orientation: Platform.isPortrait() ? "PORTRAIT" : "LANDSCAPE",
+    });
   }
 
   updateDifficultyValue (value) {
@@ -61,8 +71,7 @@ export default class SettingsModal extends Component {
   }
 
   render () {
-    const difficultyHeaderStyles = [TextStyles.size16, TextStyles.marginRight4, TextStyles.marginLeft4];
-    const notationHeaderStyles = [TextStyles.size16, TextStyles.marginTop16, TextStyles.marginRight4, TextStyles.marginLeft4];
+    const headerStyles = [TextStyles.size16, TextStyles.marginRight4, TextStyles.marginLeft4];
 
     return (
       <Modal isVisible={this.props.showModal}
@@ -70,28 +79,39 @@ export default class SettingsModal extends Component {
              onRequestClose={this.closeWithoutSaving}>
         <FlexView>
           <FlexSpace />
-          <FlexView styles={[ViewStyles.modalContainer]}>
-            <FlexView styles={[FlexStyles.flexRow, FlexStyles.justifyBetween]}>
-              <Text style={difficultyHeaderStyles}>Difficulty</Text>
-              <Text style={difficultyHeaderStyles}>{this.state.currentDifficulty}</Text>
+          <FlexView flex={ this.state.orientation === "PORTRAIT" ? 1 : 10 } 
+                    styles={[ViewStyles.modalContainer]}>
+            <FlexView>
+              <FlexView styles={[FlexStyles.flexRow, FlexStyles.justifyBetween]}>
+                <Text style={headerStyles}>Difficulty</Text>
+                <Text style={headerStyles}>{this.state.currentDifficulty}</Text>
+              </FlexView>
             </FlexView>
-            <Slider minimumValue={2}
-                    maximumValue={6}
-                    step={1}
-                    ref={component => this._difficultySlider = component}
-                    value={this.props.currentDifficulty}
-                    onValueChange={this.updateDifficultyValue}
-                    onSlidingComplete={this.updateDifficultyValue} />
-            <Text style={notationHeaderStyles}>Notation</Text>
-            <Picker onValueChange={this.updateNotationValue}
-                    mode="dropdown"
-                    selectedValue={this.state.currentNotation}>
-              <Picker.Item label="Prefix (Polish)" value="PREFIX" />
-              <Picker.Item label="Infix" value="INFIX" />
-              <Picker.Item label="Postfix (Reverse Polish)" value="POSTFIX" />
-            </Picker>
-            <Button onPress={this.saveAndClose}
-                    title="Save" />
+            <FlexView>
+              <Slider minimumValue={2}
+                      maximumValue={6}
+                      step={1}
+                      ref={component => this._difficultySlider = component}
+                      value={this.props.currentDifficulty}
+                      onValueChange={this.updateDifficultyValue}
+                      onSlidingComplete={this.updateDifficultyValue} />
+            </FlexView>
+            <FlexView>
+              <Text style={headerStyles}>Notation</Text>
+            </FlexView>
+            <FlexView>
+              <Picker onValueChange={this.updateNotationValue}
+                      mode="dropdown"
+                      selectedValue={this.state.currentNotation}>
+                <Picker.Item label="Prefix (Polish)" value="PREFIX" />
+                <Picker.Item label="Infix" value="INFIX" />
+                <Picker.Item label="Postfix (Reverse Polish)" value="POSTFIX" />
+              </Picker>
+            </FlexView>
+            <FlexView>
+              <Button onPress={this.saveAndClose}
+                      title="Save" />
+            </FlexView>
           </FlexView>
           <FlexSpace />
         </FlexView>
