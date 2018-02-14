@@ -27,7 +27,6 @@ export default class Application extends Component {
       show_hint: false,
       notation: "INFIX",
       number_of_operations: 2,
-      // times_submitted: 0,
       orientation: Platform.isPortrait() ? "PORTRAIT" : "LANDSCAPE",
       device_type: Platform.isTablet() ? "TABLET" : "PHONE",
     };
@@ -73,7 +72,6 @@ export default class Application extends Component {
       submitted_answer: "",
       show_hint: false,
       answer_is_submitted: false,
-      // times_submitted: 0,
     });
   }
   
@@ -101,7 +99,6 @@ export default class Application extends Component {
     if (submitted_answer && submitted_answer.length) {
       this.setState({
         answer_is_submitted: true,
-        // times_submitted: this.state.times_submitted + 1,
       });
     }
   }
@@ -130,10 +127,7 @@ export default class Application extends Component {
           <NextQuestionButton onPress={this.generateNewQuestion} />
         </FlexView>
         {/* Space for Keyboard */}
-        { this.state.orientation === "PORTRAIT" ?
-          <FlexSpace /> :
-          null
-        }
+        { this.state.orientation === "PORTRAIT" ? <FlexSpace /> : null }
       </FlexView>
     );
   }
