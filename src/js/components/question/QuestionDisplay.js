@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import { Text, View } from "react-native";
+import { Text } from "react-native";
+
+import FlexView from "../layout/FlexView";
 
 import FlexStyles from "../../styles/FlexStyles";
 import TextStyles from "../../styles/TextStyles";
@@ -25,9 +27,9 @@ export default class QuestionDisplay extends Component {
     });
 
     return (
-      <View style={[FlexStyles.flex, FlexStyles.flexRow, FlexStyles.alignCenter, FlexStyles.justifyCenter]}>
+      <FlexView styles={[FlexStyles.flexRow, FlexStyles.alignCenter, FlexStyles.justifyCenter]}>
         { question_display }
-      </View>
+      </FlexView>
     );
   }
 }

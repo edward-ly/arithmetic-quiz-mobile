@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import { StyleSheet, Text, TextInput, TouchableOpacity, View } from "react-native";
+import { StyleSheet, Text, TextInput, TouchableOpacity } from "react-native";
+
+import FlexView from "../layout/FlexView";
 
 import FlexStyles from "../../styles/FlexStyles";
 import TextStyles from "../../styles/TextStyles";
@@ -14,8 +16,8 @@ export default class AnswerForm extends Component {
   
   render () {
     return (
-      <View style={[FlexStyles.flex, FlexStyles.justifyCenter]}>
-        <View style={[FlexStyles.flex, FlexStyles.flexRow, FlexStyles.alignCenter, FlexStyles.justifyCenter]}>
+      <FlexView styles={[FlexStyles.justifyCenter]}>
+        <FlexView styles={[FlexStyles.flexRow, FlexStyles.alignCenter, FlexStyles.justifyCenter]}>
           <TextInput style={[TextStyles.size32, TextStyles.alignCenter, styles.answerBox]}
                      ref={this.props.inputRef}
                      underlineColorAndroid="transparent"
@@ -28,8 +30,8 @@ export default class AnswerForm extends Component {
               Submit
             </Text>
          </TouchableOpacity>
-        </View>
-      </View>
+        </FlexView>
+      </FlexView>
     );
   }
 }

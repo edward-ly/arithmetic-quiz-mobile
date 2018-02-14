@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import { View } from "react-native";
 import Toast from "react-native-root-toast";
 
+import FlexView from "../layout/FlexView";
 import SettingsButton from "./SettingsButton";
 import SettingsModal from "./SettingsModal";
 
@@ -48,14 +48,14 @@ export default class SettingsView extends Component {
 
   render () {
     return (
-      <View style={FlexStyles.flex}>
+      <FlexView>
         <SettingsButton onPress={this.openSettingsModal} />
         <SettingsModal showModal={this.state.showSettingsModal}
                        closeModal={this.closeSettingsModal}
                        closeModalWithoutSaving={this.closeSettingsModalWithoutSaving}
                        currentDifficulty={this.props.currentDifficulty}
                        currentNotation={this.props.currentNotation} />
-      </View>
+      </FlexView>
     );
   }
 }

@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import { Text, View } from "react-native";
+import { Text } from "react-native";
+
+import FlexView from "../layout/FlexView";
 
 import FlexStyles from "../../styles/FlexStyles";
 import TextStyles from "../../styles/TextStyles";
@@ -26,9 +28,9 @@ export default class StatusMessage extends Component {
     }
 
     return (
-      <View style={[FlexStyles.flex, FlexStyles.alignCenter, FlexStyles.justifyCenter]}>
+      <FlexView styles={[FlexStyles.alignCenter, FlexStyles.justifyCenter]}>
         <Text style={message_styles}>{status_message}</Text>
-      </View>
+      </FlexView>
     );
   }
 }
