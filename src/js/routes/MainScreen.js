@@ -5,14 +5,12 @@ import Icon from "react-native-vector-icons/FontAwesome";
 import AnswerForm from "../components/answer/AnswerForm";
 import FlexSpace from "../components/layout/FlexSpace";
 import FlexView from "../components/layout/FlexView";
-import Header from "../components/navigation/Header";
 import HintButton from "../components/answer/HintButton";
 import NextQuestionButton from "../components/question/NextQuestionButton";
 import QuestionDisplay from "../components/question/QuestionDisplay";
+import ScreenWrapper from "../components/navigation/ScreenWrapper";
 import SettingsView from "../components/settings/SettingsView";
 import StatusMessage from "../components/answer/StatusMessage";
-
-import ViewStyles from "../styles/ViewStyles";
 
 import MathHelper from "../utilities/MathHelper";
 import Platform from "../utilities/Platform";
@@ -112,36 +110,31 @@ export default class HomeScreen extends Component {
   
   render () {
     return (
-      <FlexView>
-        <FlexView flex={ this.state.orientation === "PORTRAIT" ? 1 : 2 }
-                  styles={[ViewStyles.headerContainer]}>
-          <Header onPress={() => this.props.navigation.navigate("DrawerToggle")} />
+      <ScreenWrapper flex={ this.state.orientation === "PORTRAIT" ? 1 : 2 }
+                     onPress={() => this.props.navigation.navigate("DrawerToggle")}>
+        {/* Question Area */}
+        <FlexView>
+          <SettingsView saveSettings={this.saveSettings}
+                        currentDifficulty={this.state.number_of_operations}
+                        currentNotation={this.state.notation} />
+          <QuestionDisplay question={this.state.question}
+                           showHint={this.state.show_hint}
+                           hint={this.state.hint} />
+          <StatusMessage isSubmitted={this.state.answer_is_submitted}
+                         answerIsCorrect={this.checkAnswer()}
+                         answer={this.state.correct_answer} />
         </FlexView>
-        <FlexView flex={9} styles={[ViewStyles.mainPageContainer]}>
-          {/* Question Area */}
-          <FlexView>
-            <SettingsView saveSettings={this.saveSettings}
-                          currentDifficulty={this.state.number_of_operations}
-                          currentNotation={this.state.notation} />
-            <QuestionDisplay question={this.state.question}
-                             showHint={this.state.show_hint}
-                             hint={this.state.hint} />
-            <StatusMessage isSubmitted={this.state.answer_is_submitted}
-                           answerIsCorrect={this.checkAnswer()}
-                           answer={this.state.correct_answer} />
-          </FlexView>
-          {/* Answer Area */}
-          <FlexView>
-            <AnswerForm inputRef={component => this._answerField = component}
-                        onChangeText={text => this.updateAnswer(text)}
-                        onSubmit={this.submitAnswer} />
-            <HintButton onPress={this.showHint} />
-            <NextQuestionButton onPress={this.generateNewQuestion} />
-          </FlexView>
-          {/* Space for Keyboard */}
-          { this.state.orientation === "PORTRAIT" ? <FlexSpace /> : null }
+        {/* Answer Area */}
+        <FlexView>
+          <AnswerForm inputRef={component => this._answerField = component}
+                      onChangeText={text => this.updateAnswer(text)}
+                      onSubmit={this.submitAnswer} />
+          <HintButton onPress={this.showHint} />
+          <NextQuestionButton onPress={this.generateNewQuestion} />
         </FlexView>
-      </FlexView>
+        {/* Space for Keyboard */}
+        { this.state.orientation === "PORTRAIT" ? <FlexSpace /> : null }
+      </ScreenWrapper>
     );
   }
 }
