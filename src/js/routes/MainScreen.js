@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Dimensions } from "react-native";
+import Icon from "react-native-vector-icons/FontAwesome";
 
 import AnswerForm from "../components/answer/AnswerForm";
 import FlexSpace from "../components/layout/FlexSpace";
@@ -19,6 +20,7 @@ import Platform from "../utilities/Platform";
 export default class HomeScreen extends Component {
   static navigationOptions = {
     drawerLabel: "Home",
+    drawerIcon: <Icon name="home" size={24} />,
   };
 
   constructor (props) {
