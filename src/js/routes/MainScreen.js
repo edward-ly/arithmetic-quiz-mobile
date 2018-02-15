@@ -111,7 +111,8 @@ export default class HomeScreen extends Component {
   render () {
     return (
       <FlexView>
-        <FlexView styles={[ViewStyles.headerContainer]}>
+        <FlexView flex={ this.state.orientation === "PORTRAIT" ? 1 : 2 }
+                  styles={[ViewStyles.headerContainer]}>
           <Header onPress={() => this.props.navigation.navigate("DrawerToggle")} />
         </FlexView>
         <FlexView flex={9} styles={[ViewStyles.mainPageContainer]}>
