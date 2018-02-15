@@ -1,9 +1,11 @@
 import React, { Component } from "react";
 import { Dimensions } from "react-native";
+import { DrawerNavigator } from "react-navigation";
 
 import AnswerForm from "./components/answer/AnswerForm";
 import FlexSpace from "./components/layout/FlexSpace";
 import FlexView from "./components/layout/FlexView";
+import Header from "./components/navigation/Header";
 import HintButton from "./components/answer/HintButton";
 import NextQuestionButton from "./components/question/NextQuestionButton";
 import QuestionDisplay from "./components/question/QuestionDisplay";
@@ -15,7 +17,11 @@ import ViewStyles from "./styles/ViewStyles";
 import MathHelper from "./utilities/MathHelper";
 import Platform from "./utilities/Platform";
 
-export default class Application extends Component {
+class HomeScreen extends Component {
+  static navigationOptions = {
+    drawerLabel: "Home",
+  };
+
   constructor (props) {
     super(props);
     this.state = {
@@ -30,7 +36,7 @@ export default class Application extends Component {
       orientation: Platform.isPortrait() ? "PORTRAIT" : "LANDSCAPE",
       device_type: Platform.isTablet() ? "TABLET" : "PHONE",
     };
-    
+
     this.generateNewQuestion = this.generateNewQuestion.bind(this);
     this.saveSettings = this.saveSettings.bind(this);
     this.showHint = this.showHint.bind(this);
@@ -105,30 +111,41 @@ export default class Application extends Component {
   
   render () {
     return (
-      <FlexView styles={[ViewStyles.mainPageContainer]}>
-        {/* Question Area */}
-        <FlexView>
-          <SettingsView saveSettings={this.saveSettings}
-                        currentDifficulty={this.state.number_of_operations}
-                        currentNotation={this.state.notation} />
-          <QuestionDisplay question={this.state.question}
-                           showHint={this.state.show_hint}
-                           hint={this.state.hint} />
-          <StatusMessage isSubmitted={this.state.answer_is_submitted}
-                         answerIsCorrect={this.checkAnswer()}
-                         answer={this.state.correct_answer} />
+      <FlexView>
+        <FlexView styles={[ViewStyles.headerContainer]}>
+          <Header onPress={() => this.props.navigation.navigate("DrawerToggle")} />
         </FlexView>
-        {/* Answer Area */}
-        <FlexView>
-          <AnswerForm inputRef={component => this._answerField = component}
-                      onChangeText={text => this.updateAnswer(text)}
-                      onSubmit={this.submitAnswer} />
-          <HintButton onPress={this.showHint} />
-          <NextQuestionButton onPress={this.generateNewQuestion} />
+        <FlexView flex={9} styles={[ViewStyles.mainPageContainer]}>
+          {/* Question Area */}
+          <FlexView>
+            <SettingsView saveSettings={this.saveSettings}
+                          currentDifficulty={this.state.number_of_operations}
+                          currentNotation={this.state.notation} />
+            <QuestionDisplay question={this.state.question}
+                             showHint={this.state.show_hint}
+                             hint={this.state.hint} />
+            <StatusMessage isSubmitted={this.state.answer_is_submitted}
+                           answerIsCorrect={this.checkAnswer()}
+                           answer={this.state.correct_answer} />
+          </FlexView>
+          {/* Answer Area */}
+          <FlexView>
+            <AnswerForm inputRef={component => this._answerField = component}
+                        onChangeText={text => this.updateAnswer(text)}
+                        onSubmit={this.submitAnswer} />
+            <HintButton onPress={this.showHint} />
+            <NextQuestionButton onPress={this.generateNewQuestion} />
+          </FlexView>
+          {/* Space for Keyboard */}
+          { this.state.orientation === "PORTRAIT" ? <FlexSpace /> : null }
         </FlexView>
-        {/* Space for Keyboard */}
-        { this.state.orientation === "PORTRAIT" ? <FlexSpace /> : null }
       </FlexView>
     );
   }
 }
+
+export default Application = DrawerNavigator({
+  App: {
+    screen: HomeScreen,
+  },
+});
