@@ -2,6 +2,7 @@ import { StyleSheet } from "react-native";
 
 export default ViewStyles = StyleSheet.create({
   headerContainer: {
+    height: 80,
     backgroundColor: "#ddd",
     borderBottomColor: "#111",
     borderBottomWidth: 2,
