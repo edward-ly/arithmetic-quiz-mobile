@@ -9,13 +9,12 @@ import HintButton from "../components/answer/HintButton";
 import NextQuestionButton from "../components/question/NextQuestionButton";
 import QuestionDisplay from "../components/question/QuestionDisplay";
 import ScreenWrapper from "../components/navigation/ScreenWrapper";
-import SettingsView from "../components/settings/SettingsView";
 import StatusMessage from "../components/answer/StatusMessage";
 
 import MathHelper from "../utilities/MathHelper";
 import Platform from "../utilities/Platform";
 
-export default class HomeScreen extends Component {
+export default class MainScreen extends Component {
   static navigationOptions = {
     drawerLabel: "Home",
     drawerIcon: <Icon name="home" size={24} />,
@@ -100,11 +99,9 @@ export default class HomeScreen extends Component {
   
   render () {
     return (
-      <ScreenWrapper flex={ this.state.orientation === "PORTRAIT" ? 1 : 2 }
-                     onPress={() => this.props.navigation.navigate("DrawerToggle")}>
+      <ScreenWrapper onPress={() => this.props.navigation.navigate("DrawerToggle")}>
         {/* Question Area */}
-        <FlexView>
-          <SettingsView />
+        <FlexView flex={2}>
           <QuestionDisplay question={this.state.question}
                            showHint={this.state.show_hint}
                            hint={this.state.hint} />
@@ -113,7 +110,7 @@ export default class HomeScreen extends Component {
                          answer={this.state.correct_answer} />
         </FlexView>
         {/* Answer Area */}
-        <FlexView>
+        <FlexView flex={3}>
           <AnswerForm inputRef={component => this._answerField = component}
                       onChangeText={text => this.updateAnswer(text)}
                       onSubmit={this.submitAnswer} />
@@ -121,7 +118,7 @@ export default class HomeScreen extends Component {
           <NextQuestionButton onPress={this.generateNewQuestion} />
         </FlexView>
         {/* Space for Keyboard */}
-        { this.state.orientation === "PORTRAIT" ? <FlexSpace /> : null }
+        { this.state.orientation === "PORTRAIT" ? <FlexSpace flex={3} /> : null }
       </ScreenWrapper>
     );
   }
