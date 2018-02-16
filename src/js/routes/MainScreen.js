@@ -30,14 +30,11 @@ export default class HomeScreen extends Component {
       question: [],
       hint: [],
       show_hint: false,
-      notation: "INFIX",
-      number_of_operations: 2,
       orientation: Platform.isPortrait() ? "PORTRAIT" : "LANDSCAPE",
       device_type: Platform.isTablet() ? "TABLET" : "PHONE",
     };
 
     this.generateNewQuestion = this.generateNewQuestion.bind(this);
-    this.saveSettings = this.saveSettings.bind(this);
     this.showHint = this.showHint.bind(this);
     this.checkAnswer = this.checkAnswer.bind(this);
     this.submitAnswer = this.submitAnswer.bind(this);
@@ -54,16 +51,9 @@ export default class HomeScreen extends Component {
     });
   }
 
-  saveSettings (new_settings) {
-    this.setState({
-      number_of_operations: new_settings.number_of_operations,
-      notation: new_settings.notation,
-    });
-  }
-
   generateNewQuestion () {
     // Randomly generate a new expression and update state.
-    let { number_of_operations, notation } = this.state;
+    let { number_of_operations, notation } = global;
     let answer = MathHelper.generateRandomInteger(41, -20).toString();
     let { question, hint } = MathHelper.generateRandomExpression(answer, number_of_operations, notation);
 
@@ -114,9 +104,7 @@ export default class HomeScreen extends Component {
                      onPress={() => this.props.navigation.navigate("DrawerToggle")}>
         {/* Question Area */}
         <FlexView>
-          <SettingsView saveSettings={this.saveSettings}
-                        currentDifficulty={this.state.number_of_operations}
-                        currentNotation={this.state.notation} />
+          <SettingsView />
           <QuestionDisplay question={this.state.question}
                            showHint={this.state.show_hint}
                            hint={this.state.hint} />
