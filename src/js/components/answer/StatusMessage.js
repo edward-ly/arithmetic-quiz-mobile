@@ -11,6 +11,7 @@ export default class StatusMessage extends Component {
   static propTypes = {
     isSubmitted: PropTypes.bool.isRequired,
     answerIsCorrect: PropTypes.bool.isRequired,
+    showAnswer: PropTypes.bool,
     answer: PropTypes.string,
   }
   
@@ -19,11 +20,14 @@ export default class StatusMessage extends Component {
     let message_styles = [TextStyles.size32, TextStyles.alignCenter];
     if (this.props.isSubmitted) {
       if (this.props.answerIsCorrect) {
-        status_message = "Correct! Answer: " + this.props.answer;
+        status_message += "Correct!";
         message_styles.push(TextStyles.green);
       } else {
-        status_message = "Incorrect! Answer: " + this.props.answer;
+        status_message += "Incorrect!";
         message_styles.push(TextStyles.red);
+      }
+      if (this.props.showAnswer) {
+        status_message += " Answer: " + this.props.answer;
       }
     }
 
