@@ -1,20 +1,11 @@
 import React, { Component } from "react";
-import PropTypes from "prop-types";
 import Toast from "react-native-root-toast";
 
 import FlexView from "../layout/FlexView";
 import SettingsButton from "./SettingsButton";
 import SettingsModal from "./SettingsModal";
 
-import FlexStyles from "../../styles/FlexStyles";
-
 export default class SettingsView extends Component {
-  static propTypes = {
-    saveSettings: PropTypes.func.isRequired,
-    currentDifficulty: PropTypes.number.isRequired,
-    currentNotation: PropTypes.string.isRequired,
-  }
-  
   constructor (props) {
     super(props);
     this.state = {
@@ -33,7 +24,9 @@ export default class SettingsView extends Component {
   }
 
   closeSettingsModal (new_settings) {
-    this.props.saveSettings(new_settings);
+    global.notation = new_settings.notation;
+    global.number_of_operations = new_settings.number_of_operations;
+
     Toast.show("Settings saved! Any changes will be applied on the next question.");
     this.setState({
       showSettingsModal: false,
@@ -53,8 +46,8 @@ export default class SettingsView extends Component {
         <SettingsModal showModal={this.state.showSettingsModal}
                        closeModal={this.closeSettingsModal}
                        closeModalWithoutSaving={this.closeSettingsModalWithoutSaving}
-                       currentDifficulty={this.props.currentDifficulty}
-                       currentNotation={this.props.currentNotation} />
+                       currentDifficulty={global.number_of_operations}
+                       currentNotation={global.notation} />
       </FlexView>
     );
   }
