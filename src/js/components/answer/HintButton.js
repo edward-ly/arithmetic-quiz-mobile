@@ -4,6 +4,7 @@ import { Text, TouchableOpacity } from "react-native";
 
 import FlexView from "../layout/FlexView";
 
+import ButtonStyles from "../../styles/ButtonStyles";
 import FlexStyles from "../../styles/FlexStyles";
 
 export default class HintButton extends Component {
@@ -14,9 +15,9 @@ export default class HintButton extends Component {
   render () {
     return (
       <FlexView styles={[FlexStyles.justifyCenter]}>
-        <TouchableOpacity style={{ alignItems: "center", backgroundColor: "skyblue", padding: 8, borderColor: "#ccc", borderWidth: 2, }}
+        <TouchableOpacity style={ButtonStyles.hintButton}
                           onPress={this.props.onPress}>
-          <Text style={{ color: "white", fontSize: 24, }}>
+          <Text style={ButtonStyles.hintButtonText}>
             Hint
           </Text>
         </TouchableOpacity>

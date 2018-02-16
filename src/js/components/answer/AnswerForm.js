@@ -4,6 +4,7 @@ import { StyleSheet, Text, TextInput, TouchableOpacity } from "react-native";
 
 import FlexView from "../layout/FlexView";
 
+import ButtonStyles from "../../styles/ButtonStyles";
 import FlexStyles from "../../styles/FlexStyles";
 import TextStyles from "../../styles/TextStyles";
 
@@ -24,9 +25,9 @@ export default class AnswerForm extends Component {
                      placeholder="Answer"
                      keyboardType="numeric"
                      onChangeText={this.props.onChangeText} />
-          <TouchableOpacity style={styles.submitButton}
+          <TouchableOpacity style={ButtonStyles.submitButton}
                             onPress={this.props.onSubmit}>
-            <Text style={styles.submitText}>
+            <Text style={ButtonStyles.submitButtonText}>
               Submit
             </Text>
          </TouchableOpacity>
@@ -42,16 +43,5 @@ const styles = StyleSheet.create({
     borderColor: "#aaa",
     borderWidth: 2,
     padding: 2,
-  },
-  submitButton: {
-    alignItems: "center",
-    backgroundColor: "green",
-    padding: 8,
-    borderColor: "#aaa",
-    borderWidth: 2,
-  },
-  submitText: {
-    color: "white",
-    fontSize: 22,
   },
 });
