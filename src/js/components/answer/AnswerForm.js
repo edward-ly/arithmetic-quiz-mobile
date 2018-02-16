@@ -1,12 +1,12 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import { StyleSheet, Text, TextInput, TouchableOpacity } from "react-native";
+import { Text, TextInput, TouchableOpacity } from "react-native";
 
 import FlexView from "../layout/FlexView";
 
 import ButtonStyles from "../../styles/ButtonStyles";
 import FlexStyles from "../../styles/FlexStyles";
-import TextStyles from "../../styles/TextStyles";
+import InputStyles from "../../styles/InputStyles";
 
 export default class AnswerForm extends Component {
   static propTypes = {
@@ -19,7 +19,7 @@ export default class AnswerForm extends Component {
     return (
       <FlexView styles={[FlexStyles.justifyCenter]}>
         <FlexView styles={[FlexStyles.flexRow, FlexStyles.alignCenter, FlexStyles.justifyCenter]}>
-          <TextInput style={[TextStyles.size32, TextStyles.alignCenter, styles.answerBox]}
+          <TextInput style={InputStyles.answerBox}
                      ref={this.props.inputRef}
                      underlineColorAndroid="transparent"
                      placeholder="Answer"
@@ -36,12 +36,3 @@ export default class AnswerForm extends Component {
     );
   }
 }
-
-const styles = StyleSheet.create({
-  answerBox: {
-    flex: 1,
-    borderColor: "#aaa",
-    borderWidth: 2,
-    padding: 2,
-  },
-});
