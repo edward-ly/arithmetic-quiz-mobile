@@ -7,6 +7,8 @@ export default InputStyles = StyleSheet.create({
     textAlign: "center",
     borderColor: "#aaa",
     borderWidth: 2,
+    borderTopLeftRadius: 4,
+    borderBottomLeftRadius: 4,
     padding: 2,
   },
 });

@@ -15,6 +15,7 @@ export default ButtonStyles = StyleSheet.create({
     padding: 8,
     borderColor: "#ccc",
     borderWidth: 2,
+    borderRadius: 4,
   },
   hintButtonText: {
     color: "white",
@@ -26,6 +27,7 @@ export default ButtonStyles = StyleSheet.create({
     padding: 8,
     borderColor: "#ccc",
     borderWidth: 2,
+    borderRadius: 4,
   },
   nextQuestionButtonText: {
     color: "white",
@@ -37,6 +39,8 @@ export default ButtonStyles = StyleSheet.create({
     padding: 8,
     borderColor: "#aaa",
     borderWidth: 2,
+    borderTopRightRadius: 4,
+    borderBottomRightRadius: 4,
   },
   submitButtonText: {
     color: "white",
