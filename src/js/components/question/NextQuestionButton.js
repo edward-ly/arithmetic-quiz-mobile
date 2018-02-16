@@ -14,7 +14,7 @@ export default class NextQuestionButton extends Component {
   render () {
     return (
       <FlexView styles={[FlexStyles.justifyCenter]}>
-        <TouchableOpacity style={{ alignItems: "center", backgroundColor: "orange", padding: 10, borderColor: "#ccc", borderWidth: 2, }}
+        <TouchableOpacity style={{ alignItems: "center", backgroundColor: "orange", padding: 8, borderColor: "#ccc", borderWidth: 2, }}
                           onPress={this.props.onPress}>
           <Text style={{ color: "white", fontSize: 24, }}>
             New Question

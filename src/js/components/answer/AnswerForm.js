@@ -41,17 +41,17 @@ const styles = StyleSheet.create({
     flex: 1,
     borderColor: "#aaa",
     borderWidth: 2,
-    padding: 4,
+    padding: 2,
   },
   submitButton: {
     alignItems: "center",
     backgroundColor: "green",
-    padding: 9,
+    padding: 8,
     borderColor: "#aaa",
     borderWidth: 2,
   },
   submitText: {
     color: "white",
-    fontSize: 23.5,
+    fontSize: 22,
   },
 });
