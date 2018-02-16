@@ -1,6 +1,14 @@
 import { StyleSheet } from "react-native";
 
 export default ButtonStyles = StyleSheet.create({
+  drawerToggleButton: {
+    alignItems: "center",
+    backgroundColor: "transparent",
+    borderColor: "#666",
+    borderWidth: 2,
+    borderRadius: 4,
+    width: 40,
+  },
   hintButton: {
     alignItems: "center",
     backgroundColor: "skyblue",
