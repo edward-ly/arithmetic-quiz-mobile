@@ -24,10 +24,10 @@ export default class MainScreen extends Component {
     super(props);
     this.state = {
       submitted_answer: "",
-      correct_answer: "",
+      correct_answer: global.answer,
       answer_is_submitted: false,
-      question: [],
-      hint: [],
+      question: global.question,
+      hint: global.hint,
       show_hint: false,
       orientation: Platform.isPortrait() ? "PORTRAIT" : "LANDSCAPE",
       device_type: Platform.isTablet() ? "TABLET" : "PHONE",
@@ -40,10 +40,6 @@ export default class MainScreen extends Component {
     Dimensions.addEventListener("change", this._orientationDidChange.bind(this));
   }
   
-  componentDidMount () {
-    this.generateNewQuestion();
-  }
-
   _orientationDidChange () {
     this.setState({
       orientation: Platform.isPortrait() ? "PORTRAIT" : "LANDSCAPE",
@@ -53,16 +49,18 @@ export default class MainScreen extends Component {
   generateNewQuestion () {
     // Randomly generate a new expression and update state.
     let { number_of_operations, notation } = global;
-    let answer = MathHelper.generateRandomInteger(41, -20).toString();
-    let { question, hint } = MathHelper.generateRandomExpression(answer, number_of_operations, notation);
+    global.answer = MathHelper.generateRandomInteger(41, -20).toString();
+    let { question, hint } = MathHelper.generateRandomExpression(global.answer, number_of_operations, notation);
+    global.question = question;
+    global.hint = hint;
 
     // Clear answer field.
     this._answerField.setNativeProps({ text: "" });
 
     this.setState({
-      question: question,
-      hint: hint,
-      correct_answer: answer,
+      question: global.question,
+      hint: global.hint,
+      correct_answer: global.answer,
       submitted_answer: "",
       show_hint: false,
       answer_is_submitted: false,
