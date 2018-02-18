@@ -17,14 +17,14 @@ export default class StatusMessage extends Component {
   
   render () {
     let status_message = "";
-    let message_styles = [TextStyles.size32, TextStyles.alignCenter];
+    let message_styles = [TextStyles.statusMessage];
     if (this.props.isSubmitted) {
       if (this.props.answerIsCorrect) {
         status_message += "Correct!";
-        message_styles.push(TextStyles.green);
+        message_styles.push({ color: "green" });
       } else {
         status_message += "Incorrect!";
-        message_styles.push(TextStyles.red);
+        message_styles.push({ color: "red" });
       }
       if (this.props.showAnswer) {
         status_message += " Answer: " + this.props.answer;

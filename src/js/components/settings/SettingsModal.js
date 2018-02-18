@@ -7,7 +7,6 @@ import FlexSpace from "../layout/FlexSpace";
 import FlexView from "../layout/FlexView";
 
 import FlexStyles from "../../styles/FlexStyles";
-import TextStyles from "../../styles/TextStyles";
 import ViewStyles from "../../styles/ViewStyles";
 
 import Platform from "../../utilities/Platform";
@@ -71,8 +70,6 @@ export default class SettingsModal extends Component {
   }
 
   render () {
-    const headerStyles = [TextStyles.size16, TextStyles.marginRight4, TextStyles.marginLeft4];
-
     return (
       <Modal isVisible={this.props.showModal}
              onBackdropPress={this.closeWithoutSaving}
@@ -82,8 +79,8 @@ export default class SettingsModal extends Component {
           <FlexView styles={[ViewStyles.modalContainer]}>
             <FlexView>
               <FlexView styles={[FlexStyles.flexRow, FlexStyles.justifyBetween]}>
-                <Text style={headerStyles}>Difficulty</Text>
-                <Text style={headerStyles}>{this.state.currentDifficulty}</Text>
+                <Text style={ViewStyles.settingsItemHeader}>Difficulty</Text>
+                <Text style={ViewStyles.settingsItemHeader}>{this.state.currentDifficulty}</Text>
               </FlexView>
             </FlexView>
             <FlexView>
@@ -96,7 +93,7 @@ export default class SettingsModal extends Component {
                       onSlidingComplete={this.updateDifficultyValue} />
             </FlexView>
             <FlexView>
-              <Text style={headerStyles}>Notation</Text>
+              <Text style={ViewStyles.settingsItemHeader}>Notation</Text>
             </FlexView>
             <FlexView>
               <Picker onValueChange={this.updateNotationValue}

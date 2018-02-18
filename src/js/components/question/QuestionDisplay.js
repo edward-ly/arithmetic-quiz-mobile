@@ -18,7 +18,7 @@ export default class QuestionDisplay extends Component {
     const hint_colors = ["red", "orange", "yellow", "green", "blue", "purple"];
     let { question, hint, showHint } = this.props;
     let question_display = question.map((item, i) => {
-      let styles = [TextStyles.size32, TextStyles.alignCenter, TextStyles.margin6];
+      let styles = [TextStyles.questionDisplay];
       if (showHint) {
         styles.push({ color: hint_colors[hint[i]], });
       };
