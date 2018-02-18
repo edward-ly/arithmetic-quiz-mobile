@@ -51,19 +51,16 @@ export default class SettingsScreen extends Component {
   }
 
   render () {
-    const headerStyles = { fontSize: 16, marginRight: 6, marginLeft: 6, };
-    const settingsItemStyles = { height: 36, };
-
     return (
       <ScreenWrapper onPress={() => this.props.navigation.navigate("DrawerToggle")}>
         <View style={ViewStyles.settingsContainer}>
-          <View style={settingsItemStyles}>
+          <View style={ViewStyles.settingsItem}>
             <FlexView styles={[FlexStyles.flexRow, FlexStyles.justifyBetween]}>
-              <Text style={headerStyles}>Difficulty</Text>
-              <Text style={headerStyles}>{this.state.currentDifficulty}</Text>
+              <Text style={ViewStyles.settingsItemHeader}>Difficulty</Text>
+              <Text style={ViewStyles.settingsItemHeader}>{this.state.currentDifficulty}</Text>
             </FlexView>
           </View>
-          <View style={settingsItemStyles}>
+          <View style={ViewStyles.settingsItem}>
             <Slider minimumValue={2}
                     maximumValue={6}
                     step={1}
@@ -71,10 +68,10 @@ export default class SettingsScreen extends Component {
                     onValueChange={this.updateDifficultyValue}
                     onSlidingComplete={this.saveDifficultyValue} />
           </View>
-          <View style={settingsItemStyles}>
-            <Text style={headerStyles}>Notation</Text>
+          <View style={ViewStyles.settingsItem}>
+            <Text style={ViewStyles.settingsItemHeader}>Notation</Text>
           </View>
-          <View style={settingsItemStyles}>
+          <View style={ViewStyles.settingsItem}>
             <Picker onValueChange={this.saveNotationValue}
                     mode="dropdown"
                     selectedValue={this.state.currentNotation}>
