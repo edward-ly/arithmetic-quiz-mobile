@@ -28,11 +28,6 @@ export default ViewStyles = StyleSheet.create({
     backgroundColor: "#fff",
     paddingTop: 12,
   },
-  settingsItemHeader: {
-    fontSize: 16,
-    marginRight: 6,
-    marginLeft: 6,
-  },
   settingsItem: {
     height: 36,
   },

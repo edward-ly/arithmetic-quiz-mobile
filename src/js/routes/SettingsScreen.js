@@ -8,6 +8,7 @@ import FlexView from "../components/layout/FlexView";
 import ScreenWrapper from "../components/navigation/ScreenWrapper";
 
 import FlexStyles from "../styles/FlexStyles";
+import TextStyles from "../styles/TextStyles";
 import ViewStyles from "../styles/ViewStyles";
 
 export default class SettingsScreen extends Component {
@@ -56,8 +57,8 @@ export default class SettingsScreen extends Component {
         <View style={ViewStyles.settingsContainer}>
           <View style={ViewStyles.settingsItem}>
             <FlexView styles={[FlexStyles.flexRow, FlexStyles.justifyBetween]}>
-              <Text style={ViewStyles.settingsItemHeader}>Difficulty</Text>
-              <Text style={ViewStyles.settingsItemHeader}>{this.state.currentDifficulty}</Text>
+              <Text style={TextStyles.settingsItemHeader}>Difficulty</Text>
+              <Text style={TextStyles.settingsItemHeader}>{this.state.currentDifficulty}</Text>
             </FlexView>
           </View>
           <View style={ViewStyles.settingsItem}>
@@ -69,7 +70,7 @@ export default class SettingsScreen extends Component {
                     onSlidingComplete={this.saveDifficultyValue} />
           </View>
           <View style={ViewStyles.settingsItem}>
-            <Text style={ViewStyles.settingsItemHeader}>Notation</Text>
+            <Text style={TextStyles.settingsItemHeader}>Notation</Text>
           </View>
           <View style={ViewStyles.settingsItem}>
             <Picker onValueChange={this.saveNotationValue}
