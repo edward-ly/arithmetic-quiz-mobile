@@ -8,7 +8,6 @@ import FlexView from "../components/layout/FlexView";
 import ScreenWrapper from "../components/navigation/ScreenWrapper";
 
 import FlexStyles from "../styles/FlexStyles";
-import TextStyles from "../styles/TextStyles";
 import ViewStyles from "../styles/ViewStyles";
 
 export default class SettingsScreen extends Component {
@@ -37,14 +36,14 @@ export default class SettingsScreen extends Component {
   saveDifficultyValue (value) {
     if (global.number_of_operations !== value) {
       global.number_of_operations = value;
-      Toast.show("Settings saved!");
+      Toast.show("Settings saved! Changes will be applied on the next question.");
     }
   }
 
   saveNotationValue (value, index) {
     if (global.notation !== value) {
       global.notation = value;
-      Toast.show("Settings saved!");
+      Toast.show("Settings saved! Changes will be applied on the next question.");
       this.setState({
         currentNotation: value,
       });
@@ -52,12 +51,12 @@ export default class SettingsScreen extends Component {
   }
 
   render () {
-    const headerStyles = [TextStyles.size16, TextStyles.marginRight4, TextStyles.marginLeft4];
+    const headerStyles = { fontSize: 16, marginRight: 6, marginLeft: 6, };
     const settingsItemStyles = { height: 36, };
 
     return (
       <ScreenWrapper onPress={() => this.props.navigation.navigate("DrawerToggle")}>
-        <View style={ViewStyles.modalContainer}>
+        <View style={ViewStyles.settingsContainer}>
           <View style={settingsItemStyles}>
             <FlexView styles={[FlexStyles.flexRow, FlexStyles.justifyBetween]}>
               <Text style={headerStyles}>Difficulty</Text>
