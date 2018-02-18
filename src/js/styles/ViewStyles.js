@@ -21,4 +21,8 @@ export default ViewStyles = StyleSheet.create({
     borderRadius: 8,
     padding: 16,
   },
+  settingsContainer: {
+    backgroundColor: "#fff",
+    paddingTop: 12,
+  },
 });
