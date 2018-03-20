@@ -30,6 +30,7 @@ export default class SettingsScreen extends Component {
     };
 
     this.updateDifficultyValue = this.updateDifficultyValue.bind(this);
+    this.saveDifficultyValue = this.saveDifficultyValue.bind(this);
     this.saveNotationValue = this.saveNotationValue.bind(this);
   }
 
@@ -42,18 +43,22 @@ export default class SettingsScreen extends Component {
   saveDifficultyValue (value) {
     if (global.number_of_operations !== value) {
       global.number_of_operations = value;
-      Toast.show("Settings saved! Changes will be applied on the next question.");
+      this.showToastSuccess();
     }
   }
 
   saveNotationValue (value) {
     if (global.notation !== value) {
       global.notation = value;
-      Toast.show("Settings saved! Changes will be applied on the next question.");
+      this.showToastSuccess();
       this.setState({
         currentNotation: value,
       });
     }
+  }
+
+  showToastSuccess () {
+    Toast.show("Settings saved! Changes will be applied on the next question.");
   }
 
   render () {
