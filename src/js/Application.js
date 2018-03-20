@@ -3,7 +3,7 @@ import { DrawerNavigator } from "react-navigation";
 import MainScreen from "./routes/MainScreen";
 import SettingsScreen from "./routes/SettingsScreen";
 
-export default Application = DrawerNavigator({
+module.exports = DrawerNavigator({
   App: {
     screen: MainScreen,
   },

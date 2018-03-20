@@ -1,6 +1,6 @@
 const OPERATIONS = ["+", "-", "*", "/"];
 
-export default MathHelper = {
+module.exports = {
   generateRandomInteger (range, start) {
     // Returns a random integer from start to (start + range - 1).
     return Math.floor(Math.random() * range) + start;
@@ -31,6 +31,8 @@ export default MathHelper = {
       let first_number = 0;
       let second_number = this.generateRandomInteger(10, 1);
       switch (current_operation) {
+        default:
+          current_operation = "+";
         case "+":
           second_number = this.generateRandomInteger(21, 0);
           first_number = sub_answer - second_number;

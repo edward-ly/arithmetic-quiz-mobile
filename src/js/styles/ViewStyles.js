@@ -1,6 +1,6 @@
 import { StyleSheet } from "react-native";
 
-export default ViewStyles = StyleSheet.create({
+module.exports = StyleSheet.create({
   // All Screens
   headerContainer: {
     height: 80,

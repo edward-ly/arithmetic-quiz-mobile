@@ -30,7 +30,7 @@ const isPhone = () => {
   return !isTablet();
 };
 
-export default Platform = {
+module.exports = {
   isPortrait,
   isLandscape,
   isTablet,

@@ -10,6 +10,7 @@ import ViewStyles from "../../styles/ViewStyles";
 
 export default class ScreenWrapper extends Component {
   static propTypes = {
+    children: PropTypes.node,
     onPress: PropTypes.func.isRequired,
   }
 

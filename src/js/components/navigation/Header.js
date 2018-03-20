@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import { Text, TouchableOpacity, View } from "react-native";
+import { TouchableOpacity } from "react-native";
 import Icon from "react-native-vector-icons/FontAwesome";
 
 import FlexSpace from "../layout/FlexSpace";

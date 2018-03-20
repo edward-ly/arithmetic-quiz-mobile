@@ -1,6 +1,6 @@
 import { StyleSheet } from "react-native";
 
-export default TextStyles = StyleSheet.create({
+module.exports = StyleSheet.create({
   questionDisplay: {
     fontSize: 32,
     textAlign: "center",

@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import PropTypes from "prop-types";
 import { Picker, Slider, Text, View } from "react-native";
 import Icon from "react-native-vector-icons/FontAwesome";
 import Toast from "react-native-root-toast";
@@ -12,6 +13,10 @@ import TextStyles from "../styles/TextStyles";
 import ViewStyles from "../styles/ViewStyles";
 
 export default class SettingsScreen extends Component {
+  static propTypes = {
+    navigation: PropTypes.object,
+  }
+
   static navigationOptions = {
     drawerLabel: "Settings",
     drawerIcon: <Icon name="gear" size={24} />,
@@ -41,7 +46,7 @@ export default class SettingsScreen extends Component {
     }
   }
 
-  saveNotationValue (value, index) {
+  saveNotationValue (value) {
     if (global.notation !== value) {
       global.notation = value;
       Toast.show("Settings saved! Changes will be applied on the next question.");

@@ -1,6 +1,6 @@
 import { StyleSheet } from "react-native";
 
-export default FlexStyles = StyleSheet.create({
+module.exports = StyleSheet.create({
   // declare flex box
   flex: {
     flex: 1,

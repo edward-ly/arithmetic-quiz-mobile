@@ -4,6 +4,7 @@ import { View } from "react-native";
 
 export default class FlexView extends Component {
   static propTypes = {
+    children: PropTypes.node,
     flex: PropTypes.number,
     styles: PropTypes.array, // array of style objects
   }

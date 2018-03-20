@@ -48,7 +48,7 @@ export default class SettingsModal extends Component {
     });
   }
 
-  updateNotationValue (value, index) {
+  updateNotationValue (value) {
     this.setState({
       currentNotation: value,
     });
@@ -88,7 +88,7 @@ export default class SettingsModal extends Component {
               <Slider minimumValue={2}
                       maximumValue={6}
                       step={1}
-                      ref={component => this._difficultySlider = component}
+                      ref={component => { this._difficultySlider = component; }}
                       value={this.props.currentDifficulty}
                       onValueChange={this.updateDifficultyValue}
                       onSlidingComplete={this.updateDifficultyValue} />

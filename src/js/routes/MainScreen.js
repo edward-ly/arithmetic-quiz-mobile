@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import PropTypes from "prop-types";
 import { Dimensions } from "react-native";
 import Icon from "react-native-vector-icons/FontAwesome";
 
@@ -15,6 +16,10 @@ import MathHelper from "../utilities/MathHelper";
 import Platform from "../utilities/Platform";
 
 export default class MainScreen extends Component {
+  static propTypes = {
+    navigation: PropTypes.object,
+  }
+
   static navigationOptions = {
     drawerLabel: "Home",
     drawerIcon: <Icon name="home" size={24} />,
@@ -109,7 +114,7 @@ export default class MainScreen extends Component {
         </FlexView>
         {/* Answer Area */}
         <FlexView flex={3}>
-          <AnswerForm inputRef={component => this._answerField = component}
+          <AnswerForm inputRef={component => { this._answerField = component; }}
                       onChangeText={text => this.updateAnswer(text)}
                       onSubmit={this.submitAnswer} />
           <HintButton onPress={this.showHint} />

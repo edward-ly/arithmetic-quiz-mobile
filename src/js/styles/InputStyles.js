@@ -1,6 +1,6 @@
 import { StyleSheet } from "react-native";
 
-export default InputStyles = StyleSheet.create({
+module.exports = StyleSheet.create({
   answerBox: {
     flex: 1,
     fontSize: 32,

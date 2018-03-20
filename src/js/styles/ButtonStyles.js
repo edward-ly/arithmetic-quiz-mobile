@@ -1,6 +1,6 @@
 import { StyleSheet } from "react-native";
 
-export default ButtonStyles = StyleSheet.create({
+module.exports = StyleSheet.create({
   drawerToggleButton: {
     alignItems: "center",
     backgroundColor: "transparent",
