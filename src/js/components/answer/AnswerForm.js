@@ -14,7 +14,7 @@ export default class AnswerForm extends Component {
     onChangeText: PropTypes.func.isRequired,
     onSubmit: PropTypes.func.isRequired,
   }
-  
+
   render () {
     return (
       <FlexView styles={[FlexStyles.justifyCenter]}>

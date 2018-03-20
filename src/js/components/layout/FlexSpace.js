@@ -8,7 +8,7 @@ export default class FlexSpace extends Component {
     flex: PropTypes.number,
     styles: PropTypes.array, // array of style objects
   }
-  
+
   render () {
     let { flex, styles } = this.props;
     return <FlexView flex={flex} styles={styles} />;

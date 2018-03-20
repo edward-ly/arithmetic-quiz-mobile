@@ -14,7 +14,7 @@ export default class StatusMessage extends Component {
     showAnswer: PropTypes.bool,
     answer: PropTypes.string,
   }
-  
+
   render () {
     let status_message = "";
     let message_styles = [TextStyles.statusMessage];

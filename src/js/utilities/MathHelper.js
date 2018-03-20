@@ -103,7 +103,7 @@ export default MathHelper = {
               }
             }
           }
-          
+
           if (parentheses_is_required) {
             question.splice(sub_answer_index, 1, "(", first_number_string, current_operation, second_number_string, ")");
             hint.splice(sub_answer_index, 1, i, i, i, i, i);
@@ -116,4 +116,4 @@ export default MathHelper = {
 
     return { question, hint };
   },
-}
+};

@@ -23,7 +23,7 @@ export default class SettingsScreen extends Component {
       currentDifficulty: global.number_of_operations,
       currentNotation: global.notation,
     };
-    
+
     this.updateDifficultyValue = this.updateDifficultyValue.bind(this);
     this.saveNotationValue = this.saveNotationValue.bind(this);
   }

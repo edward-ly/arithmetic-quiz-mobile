@@ -11,7 +11,7 @@ export default class HintButton extends Component {
   static propTypes = {
     onPress: PropTypes.func.isRequired,
   }
-  
+
   render () {
     return (
       <FlexView styles={[FlexStyles.justifyCenter]}>

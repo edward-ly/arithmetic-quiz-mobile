@@ -11,7 +11,7 @@ export default class SettingsButton extends Component {
   static propTypes = {
     onPress: PropTypes.func.isRequired,
   }
-  
+
   render () {
     return (
       <FlexView styles={[FlexStyles.flexRow, FlexStyles.alignCenter, FlexStyles.justifyCenter]}>

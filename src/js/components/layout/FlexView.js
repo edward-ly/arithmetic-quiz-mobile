@@ -7,7 +7,7 @@ export default class FlexView extends Component {
     flex: PropTypes.number,
     styles: PropTypes.array, // array of style objects
   }
-  
+
   render () {
     let flex = this.props.flex || 1;
     let styles = [];

@@ -28,7 +28,7 @@ export default class SettingsModal extends Component {
       currentNotation: this.props.currentNotation,
       orientation: Platform.isPortrait() ? "PORTRAIT" : "LANDSCAPE",
     };
-    
+
     this.updateDifficultyValue = this.updateDifficultyValue.bind(this);
     this.updateNotationValue = this.updateNotationValue.bind(this);
     this.closeWithoutSaving = this.closeWithoutSaving.bind(this);

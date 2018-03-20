@@ -11,12 +11,12 @@ export default class SettingsView extends Component {
     this.state = {
       showSettingsModal: false,
     };
-    
+
     this.openSettingsModal = this.openSettingsModal.bind(this);
     this.closeSettingsModal = this.closeSettingsModal.bind(this);
     this.closeSettingsModalWithoutSaving = this.closeSettingsModalWithoutSaving.bind(this);
   }
-  
+
   openSettingsModal () {
     this.setState({
       showSettingsModal: true,
@@ -32,7 +32,7 @@ export default class SettingsView extends Component {
       showSettingsModal: false,
     });
   }
-  
+
   closeSettingsModalWithoutSaving () {
     this.setState({
       showSettingsModal: false,

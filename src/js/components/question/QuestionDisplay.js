@@ -13,7 +13,7 @@ export default class QuestionDisplay extends Component {
     hint: PropTypes.array.isRequired,
     showHint: PropTypes.bool.isRequired,
   }
-  
+
   render () {
     const hint_colors = ["red", "orange", "yellow", "green", "blue", "purple"];
     let { question, hint, showHint } = this.props;
@@ -21,7 +21,7 @@ export default class QuestionDisplay extends Component {
       let styles = [TextStyles.questionDisplay];
       if (showHint) {
         styles.push({ color: hint_colors[hint[i]], });
-      };
+      }
 
       return <Text key={i} style={styles}>{item}</Text>;
     });

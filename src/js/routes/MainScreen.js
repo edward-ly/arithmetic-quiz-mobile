@@ -39,7 +39,7 @@ export default class MainScreen extends Component {
     this.submitAnswer = this.submitAnswer.bind(this);
     Dimensions.addEventListener("change", this._orientationDidChange.bind(this));
   }
-  
+
   _orientationDidChange () {
     this.setState({
       orientation: Platform.isPortrait() ? "PORTRAIT" : "LANDSCAPE",
@@ -66,26 +66,26 @@ export default class MainScreen extends Component {
       answer_is_submitted: false,
     });
   }
-  
+
   showHint () {
     this.setState({
       show_hint: !this.state.show_hint,
     });
   }
-  
+
   updateAnswer (text) {
     this.setState({
       submitted_answer: text,
       answer_is_submitted: false,
     });
   }
-  
+
   checkAnswer () {
     let suggested_answer = parseInt(this.state.submitted_answer);
     let correct_answer = parseInt(this.state.correct_answer);
     return suggested_answer === correct_answer;
   }
-  
+
   submitAnswer () {
     let { submitted_answer } = this.state;
     if (submitted_answer && submitted_answer.length) {
@@ -94,7 +94,7 @@ export default class MainScreen extends Component {
       });
     }
   }
-  
+
   render () {
     return (
       <ScreenWrapper onPress={() => this.props.navigation.navigate("DrawerToggle")}>
