@@ -92,7 +92,7 @@
         "no-extra-bind": [1],
         "no-extra-boolean-cast": [2],
         "no-extra-semi": [1],
-        "no-fallthrough": [2],
+        "no-fallthrough": [0],
         "no-floating-decimal": [2],
         "no-func-assign": [2],
         "no-implied-eval": [2],
