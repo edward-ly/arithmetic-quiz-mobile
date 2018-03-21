@@ -2,8 +2,8 @@ language: node_js
 node_js:
   - "node"
 sudo: "required"
-script:
+before_script:
   - "npm run lint"
-  - "sudo sysctl -w fs.inotify.max_user_instances=1024"
-  - "sudo sysctl -w fs.inotify.max_user_watches=12288"
-  - "sudo npm start"
+  - "sudo npm install exp --global"
+script:
+  - "sudo exp publish"
