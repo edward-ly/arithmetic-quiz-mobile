@@ -1,5 +1,7 @@
 # Order of Operations Quiz
 
+[![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
+
 A [React Native](https://facebook.github.io/react-native/)-based mobile app that tests the user’s understanding of order of operations as well as arithmetic expressions in Polish / Reverse Polish notation. New questions are randomly generated on-the-fly based on user settings for endless replayability.
 
 ## Technical Overview
@@ -24,4 +26,4 @@ Now, you can download the [Expo](https://expo.io/) client app from the App Store
 
 ## Last updated
 
-5 February 2017
+20 March 2018
