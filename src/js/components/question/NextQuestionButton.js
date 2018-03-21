@@ -10,16 +10,13 @@ import FlexStyles from "../../styles/FlexStyles";
 export default class NextQuestionButton extends Component {
   static propTypes = {
     onPress: PropTypes.func.isRequired,
-  }
+  };
 
   render () {
     return (
       <FlexView styles={[FlexStyles.justifyCenter]}>
-        <TouchableOpacity style={ButtonStyles.nextQuestionButton}
-                          onPress={this.props.onPress}>
-          <Text style={ButtonStyles.nextQuestionButtonText}>
-            New Question
-          </Text>
+        <TouchableOpacity style={ButtonStyles.nextQuestionButton} onPress={this.props.onPress}>
+          <Text style={ButtonStyles.nextQuestionButtonText}>New Question</Text>
         </TouchableOpacity>
       </FlexView>
     );

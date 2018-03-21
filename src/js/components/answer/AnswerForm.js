@@ -13,24 +13,23 @@ export default class AnswerForm extends Component {
     inputRef: PropTypes.func.isRequired,
     onChangeText: PropTypes.func.isRequired,
     onSubmit: PropTypes.func.isRequired,
-  }
+  };
 
   render () {
     return (
       <FlexView styles={[FlexStyles.justifyCenter]}>
         <FlexView styles={[FlexStyles.flexRow, FlexStyles.alignCenter, FlexStyles.justifyCenter]}>
-          <TextInput style={InputStyles.answerBox}
-                     ref={this.props.inputRef}
-                     underlineColorAndroid="transparent"
-                     placeholder="Answer"
-                     keyboardType="numeric"
-                     onChangeText={this.props.onChangeText} />
-          <TouchableOpacity style={ButtonStyles.submitButton}
-                            onPress={this.props.onSubmit}>
-            <Text style={ButtonStyles.submitButtonText}>
-              Submit
-            </Text>
-         </TouchableOpacity>
+          <TextInput
+            style={InputStyles.answerBox}
+            ref={this.props.inputRef}
+            underlineColorAndroid="transparent"
+            placeholder="Answer"
+            keyboardType="numeric"
+            onChangeText={this.props.onChangeText}
+          />
+          <TouchableOpacity style={ButtonStyles.submitButton} onPress={this.props.onSubmit}>
+            <Text style={ButtonStyles.submitButtonText}>Submit</Text>
+          </TouchableOpacity>
         </FlexView>
       </FlexView>
     );

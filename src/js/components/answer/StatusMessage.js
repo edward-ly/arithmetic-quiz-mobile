@@ -13,7 +13,7 @@ export default class StatusMessage extends Component {
     answerIsCorrect: PropTypes.bool.isRequired,
     showAnswer: PropTypes.bool,
     answer: PropTypes.string,
-  }
+  };
 
   render () {
     let status_message = "";

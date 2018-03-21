@@ -12,7 +12,7 @@ export default class ScreenWrapper extends Component {
   static propTypes = {
     children: PropTypes.node,
     onPress: PropTypes.func.isRequired,
-  }
+  };
 
   render () {
     return (
@@ -20,9 +20,7 @@ export default class ScreenWrapper extends Component {
         <View style={[ViewStyles.headerContainer]}>
           <Header onPress={this.props.onPress} />
         </View>
-        <FlexView styles={[ViewStyles.mainPageContainer]}>
-          { this.props.children }
-        </FlexView>
+        <FlexView styles={[ViewStyles.mainPageContainer]}>{this.props.children}</FlexView>
       </FlexView>
     );
   }

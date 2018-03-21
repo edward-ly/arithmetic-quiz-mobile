@@ -43,11 +43,13 @@ export default class SettingsView extends Component {
     return (
       <FlexView>
         <SettingsButton onPress={this.openSettingsModal} />
-        <SettingsModal showModal={this.state.showSettingsModal}
-                       closeModal={this.closeSettingsModal}
-                       closeModalWithoutSaving={this.closeSettingsModalWithoutSaving}
-                       currentDifficulty={global.number_of_operations}
-                       currentNotation={global.notation} />
+        <SettingsModal
+          showModal={this.state.showSettingsModal}
+          closeModal={this.closeSettingsModal}
+          closeModalWithoutSaving={this.closeSettingsModalWithoutSaving}
+          currentDifficulty={global.number_of_operations}
+          currentNotation={global.notation}
+        />
       </FlexView>
     );
   }

@@ -10,15 +10,14 @@ import FlexStyles from "../../styles/FlexStyles";
 export default class SettingsButton extends Component {
   static propTypes = {
     onPress: PropTypes.func.isRequired,
-  }
+  };
 
   render () {
     return (
       <FlexView styles={[FlexStyles.flexRow, FlexStyles.alignCenter, FlexStyles.justifyCenter]}>
         <FlexSpace flex={3} />
         <FlexView>
-          <Button onPress={this.props.onPress}
-                  title="Settings" />
+          <Button onPress={this.props.onPress} title="Settings" />
         </FlexView>
       </FlexView>
     );

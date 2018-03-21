@@ -18,7 +18,7 @@ import Platform from "../utilities/Platform";
 export default class MainScreen extends Component {
   static propTypes = {
     navigation: PropTypes.object,
-  }
+  };
 
   static navigationOptions = {
     drawerLabel: "Home",
@@ -55,7 +55,11 @@ export default class MainScreen extends Component {
     // Randomly generate a new expression and update state.
     let { number_of_operations, notation } = global;
     global.answer = MathHelper.generateRandomInteger(41, -20).toString();
-    let { question, hint } = MathHelper.generateRandomExpression(global.answer, number_of_operations, notation);
+    let { question, hint } = MathHelper.generateRandomExpression(
+      global.answer,
+      number_of_operations,
+      notation
+    );
     global.question = question;
     global.hint = hint;
 
@@ -105,23 +109,31 @@ export default class MainScreen extends Component {
       <ScreenWrapper onPress={() => this.props.navigation.navigate("DrawerToggle")}>
         {/* Question Area */}
         <FlexView flex={2}>
-          <QuestionDisplay question={this.state.question}
-                           showHint={this.state.show_hint}
-                           hint={this.state.hint} />
-          <StatusMessage isSubmitted={this.state.answer_is_submitted}
-                         answerIsCorrect={this.checkAnswer()}
-                         answer={this.state.correct_answer} />
+          <QuestionDisplay
+            question={this.state.question}
+            showHint={this.state.show_hint}
+            hint={this.state.hint}
+          />
+          <StatusMessage
+            isSubmitted={this.state.answer_is_submitted}
+            answerIsCorrect={this.checkAnswer()}
+            answer={this.state.correct_answer}
+          />
         </FlexView>
         {/* Answer Area */}
         <FlexView flex={3}>
-          <AnswerForm inputRef={component => { this._answerField = component; }}
-                      onChangeText={text => this.updateAnswer(text)}
-                      onSubmit={this.submitAnswer} />
+          <AnswerForm
+            onChangeText={text => this.updateAnswer(text)}
+            onSubmit={this.submitAnswer}
+            inputRef={component => {
+              this._answerField = component;
+            }}
+          />
           <HintButton onPress={this.showHint} />
           <NextQuestionButton onPress={this.generateNewQuestion} />
         </FlexView>
         {/* Space for Keyboard */}
-        { this.state.orientation === "PORTRAIT" ? <FlexSpace flex={3} /> : null }
+        {this.state.orientation === "PORTRAIT" ? <FlexSpace flex={3} /> : null}
       </ScreenWrapper>
     );
   }

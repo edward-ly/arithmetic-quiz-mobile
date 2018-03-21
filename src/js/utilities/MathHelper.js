@@ -61,22 +61,36 @@ module.exports = {
       let second_number_string = second_number.toString();
       switch (notation) {
         case "POSTFIX":
-          question.splice(sub_answer_index, 1, first_number_string, second_number_string, current_operation);
+          question.splice(
+            sub_answer_index,
+            1,
+            first_number_string,
+            second_number_string,
+            current_operation
+          );
           hint.splice(sub_answer_index, 1, i, i, i);
           break;
         case "PREFIX":
-          question.splice(sub_answer_index, 1, current_operation, first_number_string, second_number_string);
+          question.splice(
+            sub_answer_index,
+            1,
+            current_operation,
+            first_number_string,
+            second_number_string
+          );
           hint.splice(sub_answer_index, 1, i, i, i);
           break;
         case "INFIX":
         default:
           // Check if parentheses are required around current answer
           let parentheses_is_required = false;
-          if (i < number_of_operations - 1) { // no parentheses around entire expression
+          if (i < number_of_operations - 1) {
+            // no parentheses around entire expression
             let j = sub_answer_index - 1;
             let previous_operation = question[j];
 
-            if (j >= 0 && OPERATIONS.includes(previous_operation)) { // index and operation is valid
+            if (j >= 0 && OPERATIONS.includes(previous_operation)) {
+              // index and operation is valid
               if (current_operation === "/" && previous_operation === "/") {
                 // Division is non-associative
                 // Ex. (1 / 2) / 4 != 1 / (2 / 4)
@@ -107,10 +121,24 @@ module.exports = {
           }
 
           if (parentheses_is_required) {
-            question.splice(sub_answer_index, 1, "(", first_number_string, current_operation, second_number_string, ")");
+            question.splice(
+              sub_answer_index,
+              1,
+              "(",
+              first_number_string,
+              current_operation,
+              second_number_string,
+              ")"
+            );
             hint.splice(sub_answer_index, 1, i, i, i, i, i);
           } else {
-            question.splice(sub_answer_index, 1, first_number_string, current_operation, second_number_string);
+            question.splice(
+              sub_answer_index,
+              1,
+              first_number_string,
+              current_operation,
+              second_number_string
+            );
             hint.splice(sub_answer_index, 1, i, i, i);
           }
       }

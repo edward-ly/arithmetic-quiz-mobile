@@ -7,7 +7,7 @@ export default class FlexSpace extends Component {
   static propTypes = {
     flex: PropTypes.number,
     styles: PropTypes.array, // array of style objects
-  }
+  };
 
   render () {
     let { flex, styles } = this.props;

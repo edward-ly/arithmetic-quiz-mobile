@@ -12,7 +12,7 @@ export default class QuestionDisplay extends Component {
     question: PropTypes.array.isRequired,
     hint: PropTypes.array.isRequired,
     showHint: PropTypes.bool.isRequired,
-  }
+  };
 
   render () {
     const hint_colors = ["red", "orange", "yellow", "green", "blue", "purple"];
@@ -20,15 +20,19 @@ export default class QuestionDisplay extends Component {
     let question_display = question.map((item, i) => {
       let styles = [TextStyles.questionDisplay];
       if (showHint) {
-        styles.push({ color: hint_colors[hint[i]], });
+        styles.push({ color: hint_colors[hint[i]] });
       }
 
-      return <Text key={i} style={styles}>{item}</Text>;
+      return (
+        <Text key={i} style={styles}>
+          {item}
+        </Text>
+      );
     });
 
     return (
       <FlexView styles={[FlexStyles.flexRow, FlexStyles.alignCenter, FlexStyles.justifyCenter]}>
-        { question_display }
+        {question_display}
       </FlexView>
     );
   }

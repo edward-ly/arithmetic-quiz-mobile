@@ -7,7 +7,7 @@ export default class FlexView extends Component {
     children: PropTypes.node,
     flex: PropTypes.number,
     styles: PropTypes.array, // array of style objects
-  }
+  };
 
   render () {
     let flex = this.props.flex || 1;
@@ -17,8 +17,6 @@ export default class FlexView extends Component {
       styles.push(this.props.styles);
     }
 
-    return <View style={styles}>
-      { this.props.children }
-    </View>;
+    return <View style={styles}>{this.props.children}</View>;
   }
 }

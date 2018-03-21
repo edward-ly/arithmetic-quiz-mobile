@@ -12,14 +12,13 @@ import FlexStyles from "../../styles/FlexStyles";
 export default class Header extends Component {
   static propTypes = {
     onPress: PropTypes.func.isRequired,
-  }
+  };
 
   render () {
     return (
       <FlexView styles={[FlexStyles.flexRow, FlexStyles.alignCenter, FlexStyles.justifyBetween]}>
         <FlexSpace />
-        <TouchableOpacity style={ButtonStyles.drawerToggleButton}
-                          onPress={this.props.onPress}>
+        <TouchableOpacity style={ButtonStyles.drawerToggleButton} onPress={this.props.onPress}>
           <Icon name="bars" size={32} color="black" />
         </TouchableOpacity>
       </FlexView>

@@ -19,7 +19,7 @@ export default class SettingsModal extends Component {
     closeModalWithoutSaving: PropTypes.func.isRequired,
     currentDifficulty: PropTypes.number.isRequired,
     currentNotation: PropTypes.string.isRequired,
-  }
+  };
 
   constructor (props) {
     super(props);
@@ -72,11 +72,13 @@ export default class SettingsModal extends Component {
 
   render () {
     return (
-      <Modal isVisible={this.props.showModal}
-             onBackdropPress={this.closeWithoutSaving}
-             onRequestClose={this.closeWithoutSaving}>
+      <Modal
+        isVisible={this.props.showModal}
+        onBackdropPress={this.closeWithoutSaving}
+        onRequestClose={this.closeWithoutSaving}
+      >
         <FlexView>
-          { this.state.orientation === "PORTRAIT" ? <FlexSpace /> : null }
+          {this.state.orientation === "PORTRAIT" ? <FlexSpace /> : null}
           <FlexView styles={[ViewStyles.modalContainer]}>
             <FlexView>
               <FlexView styles={[FlexStyles.flexRow, FlexStyles.justifyBetween]}>
@@ -85,36 +87,48 @@ export default class SettingsModal extends Component {
               </FlexView>
             </FlexView>
             <FlexView>
-              <Slider minimumValue={2}
-                      maximumValue={6}
-                      step={1}
-                      ref={component => { this._difficultySlider = component; }}
-                      value={this.props.currentDifficulty}
-                      onValueChange={this.updateDifficultyValue}
-                      onSlidingComplete={this.updateDifficultyValue} />
+              <Slider
+                minimumValue={2}
+                maximumValue={6}
+                step={1}
+                value={this.props.currentDifficulty}
+                onValueChange={this.updateDifficultyValue}
+                onSlidingComplete={this.updateDifficultyValue}
+                ref={component => {
+                  this._difficultySlider = component;
+                }}
+              />
             </FlexView>
             <FlexView>
               <Text style={TextStyles.settingsItemHeader}>Notation</Text>
             </FlexView>
             <FlexView>
-              <Picker onValueChange={this.updateNotationValue}
-                      mode="dropdown"
-                      selectedValue={this.state.currentNotation}>
+              <Picker
+                onValueChange={this.updateNotationValue}
+                mode="dropdown"
+                selectedValue={this.state.currentNotation}
+              >
                 <Picker.Item label="Prefix (Polish)" value="PREFIX" />
                 <Picker.Item label="Infix" value="INFIX" />
                 <Picker.Item label="Postfix (Reverse Polish)" value="POSTFIX" />
               </Picker>
             </FlexView>
             <FlexView>
-              <TouchableOpacity style={{ alignItems: "center", backgroundColor: "blue", padding: 6, borderColor: "#ccc", borderWidth: 2, }}
-                                onPress={this.saveAndClose}>
-                <Text style={{ color: "white", fontSize: 16, fontWeight: "bold", }}>
-                  SAVE
-                </Text>
+              <TouchableOpacity
+                style={{
+                  alignItems: "center",
+                  backgroundColor: "blue",
+                  padding: 6,
+                  borderColor: "#ccc",
+                  borderWidth: 2,
+                }}
+                onPress={this.saveAndClose}
+              >
+                <Text style={{ color: "white", fontSize: 16, fontWeight: "bold" }}>SAVE</Text>
               </TouchableOpacity>
             </FlexView>
           </FlexView>
-          { this.state.orientation === "PORTRAIT" ? <FlexSpace /> : null }
+          {this.state.orientation === "PORTRAIT" ? <FlexSpace /> : null}
         </FlexView>
       </Modal>
     );

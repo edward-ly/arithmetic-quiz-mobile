@@ -15,7 +15,7 @@ import ViewStyles from "../styles/ViewStyles";
 export default class SettingsScreen extends Component {
   static propTypes = {
     navigation: PropTypes.object,
-  }
+  };
 
   static navigationOptions = {
     drawerLabel: "Settings",
@@ -72,20 +72,24 @@ export default class SettingsScreen extends Component {
             </FlexView>
           </View>
           <View style={ViewStyles.settingsItem}>
-            <Slider minimumValue={2}
-                    maximumValue={6}
-                    step={1}
-                    value={global.number_of_operations}
-                    onValueChange={this.updateDifficultyValue}
-                    onSlidingComplete={this.saveDifficultyValue} />
+            <Slider
+              minimumValue={2}
+              maximumValue={6}
+              step={1}
+              value={global.number_of_operations}
+              onValueChange={this.updateDifficultyValue}
+              onSlidingComplete={this.saveDifficultyValue}
+            />
           </View>
           <View style={ViewStyles.settingsItem}>
             <Text style={TextStyles.settingsItemHeader}>Notation</Text>
           </View>
           <View style={ViewStyles.settingsItem}>
-            <Picker onValueChange={this.saveNotationValue}
-                    mode="dropdown"
-                    selectedValue={this.state.currentNotation}>
+            <Picker
+              onValueChange={this.saveNotationValue}
+              mode="dropdown"
+              selectedValue={this.state.currentNotation}
+            >
               <Picker.Item label="Prefix (Polish)" value="PREFIX" />
               <Picker.Item label="Infix" value="INFIX" />
               <Picker.Item label="Postfix (Reverse Polish)" value="POSTFIX" />
