@@ -1,0 +1,18 @@
+{
+  "printWidth": 100,
+  "trailingComma": "es5",
+
+  "overrides": [
+    {
+      "files": [".prettierrc", ".eslintrc", "package.json"],
+      "options": { "parser": "json" }
+    },
+    {
+      "files": "README.md",
+      "options": {
+        "parser": "markdown",
+        "proseWrap": "never"
+      }
+    }
+  ]
+}
