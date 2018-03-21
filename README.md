@@ -1,18 +1,20 @@
 # Order of Operations Quiz
 
-[![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
+[![Build Status](https://travis-ci.org/edward-ly/arithmetic-quiz-mobile.svg?branch=develop)](https://travis-ci.org/edward-ly/arithmetic-quiz-mobile) [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg)](https://github.com/prettier/prettier)
 
 A [React Native](https://facebook.github.io/react-native/)-based mobile app that tests the user’s understanding of order of operations as well as arithmetic expressions in Polish / Reverse Polish notation. New questions are randomly generated on-the-fly based on user settings for endless replayability.
+
+You can download the app here: [https://expo.io/@edward_ly/arithmetic-quiz](https://expo.io/@edward_ly/arithmetic-quiz)
 
 ## Technical Overview
 
 This project was bootstrapped with [Create React Native App](https://github.com/react-community/create-react-native-app). For more information on how to setup and develop your own React Native App, you can find the most recent version of the official README [here](https://github.com/react-community/create-react-native-app/blob/master/README.md).
 
-## Getting Started
+## Building the App
 
 > This app uses [npm](https://github.com/npm/npm) to manage development dependencies, so install [Node](https://nodejs.org/en/) if necessary.
 
-To build the app, just clone the repository and run `npm start`.
+To build the app from source, just clone the repository and run `npm start`.
 
 ```shell
 $ git clone <this repo> <project folder>
