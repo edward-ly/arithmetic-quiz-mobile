@@ -4,7 +4,7 @@
 
 A [React Native](https://facebook.github.io/react-native/)-based mobile app that tests the user’s understanding of order of operations as well as arithmetic expressions in Polish / Reverse Polish notation. New questions are randomly generated on-the-fly based on user settings for endless replayability.
 
-You can download the app here: [https://expo.io/@edward_ly/arithmetic-quiz](https://expo.io/@edward_ly/arithmetic-quiz)
+Run the app via [Expo](https://expo.io/) here: [https://expo.io/@edward_ly/arithmetic-quiz](https://expo.io/@edward_ly/arithmetic-quiz)
 
 ## Technical Overview
 
