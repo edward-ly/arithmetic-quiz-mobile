@@ -6,4 +6,4 @@ before_script:
   - "npm run lint"
   - "npm install -g exp"
 script:
-  - "sudo exp publish"
+  - "exp publish"
