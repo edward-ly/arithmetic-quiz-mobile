@@ -1,7 +1,7 @@
 language: node_js
 node_js:
   - "node"
-sudo: enabled
+sudo: "required"
 script:
   - "npm run lint"
   - "sysctl -w fs.inotify.max_user_instances=1024"
