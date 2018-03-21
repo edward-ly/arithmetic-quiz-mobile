@@ -1,5 +1,8 @@
 {
   "expo": {
+    "name": "Arithmetic Quiz",
+    "slug": "arithmetic-quiz",
+    "githubUrl": "https://github.com/edward-ly/arithmetic-quiz-mobile",
     "sdkVersion": "23.0.0"
   }
 }
