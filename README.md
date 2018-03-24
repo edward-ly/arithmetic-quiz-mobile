@@ -30,7 +30,7 @@ Now, you can download the [Expo](https://expo.io/) client app from the App Store
 
 ### Developing the App
 
-The commands `npm start`, `npm test`, `npm run ios`, `npm run android`, and `npm run eject` function the same is in [Create React Native App](https://github.com/react-community/create-react-native-app/blob/master/README.md#getting-started). Additional commands for this project include:
+The commands `npm start`, `npm test`, `npm run ios`, `npm run android`, and `npm run eject` perform the same functions as in [Create React Native App](https://github.com/react-community/create-react-native-app/blob/master/README.md#getting-started). Additional commands for this project include:
 
 #### `npm run lint`
 
