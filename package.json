@@ -16,6 +16,8 @@
     "lint": "./node_modules/.bin/eslint src/js",
     "prettier":
       "./node_modules/.bin/prettier README.md .*rc *.json 'src/js/**/*.js' --write && ./node_modules/.bin/eslint src/js --fix",
+    "publish":
+      "git push && git checkout master && git merge develop && git push && git checkout develop",
     "start": "react-native-scripts start",
     "eject": "react-native-scripts eject",
     "android": "react-native-scripts android",

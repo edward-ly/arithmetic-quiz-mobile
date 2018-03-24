@@ -40,6 +40,10 @@ Runs [ESLint](https://eslint.org/) on all project files, printing any code warni
 
 Runs the [Prettier](https://github.com/prettier/prettier) code formatter, with ESLint being run afterwards to make any additional fixes. Any changes made are automatically written and saved to the affected files, and can be committed with `git commit` or undone with `git reset` or `git stash`.
 
+#### `npm run publish`
+
+Short for `git push && git checkout master && git merge develop && git push && git checkout develop` when run on the default `develop` branch. Pushes local commits to the `develop` and `master` branches simultaneously, and publishes the updated app to Expo via [Travis](https://travis-ci.org/).
+
 ## Last updated
 
 23 March 2018
