@@ -42,7 +42,7 @@ Runs the [Prettier](https://github.com/prettier/prettier) code formatter, with E
 
 #### `npm run publish`
 
-Short for `git push && git checkout master && git merge develop && git push && git checkout develop` when run on the default `develop` branch. Pushes local commits to the `develop` and `master` branches simultaneously, and publishes the updated app to Expo via [Travis](https://travis-ci.org/).
+Pushes local commits to the `develop` and `master` branches simultaneously, and publishes the updated app to Expo via [Travis](https://travis-ci.org/).
 
 ## Last updated
 
